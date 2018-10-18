@@ -1,0 +1,1 @@
+<a href="{{ aurl( 'sports/' . $id ) }}" class="btn btn-success"><i class="fa fa-eye"></i></a>

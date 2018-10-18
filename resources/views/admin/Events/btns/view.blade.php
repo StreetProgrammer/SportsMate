@@ -1,0 +1,1 @@
+<a href="{{ aurl('events/' . $id ) }}" class="btn btn-info"><i class="fa fa-eye"></i></a>

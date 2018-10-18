@@ -1,0 +1,27 @@
+.bg-Purple, .callout.callout-Purple, .alert-Purple, .label-Purple, .modal-Purple .modal-body-Purple {
+    color: #fff;
+    background-color: #9c27b0 !important;
+}
+.bg-darkGray, .callout.callout-darkGray, .alert-darkGray, .label-darkGray, .modal-darkGray .modal-body-darkGray {
+    color: #fff;
+    background-color: #9e9e9e !important;
+}
+.bg-brouwn, .callout.callout-brouwn, .alert-brouwn, .label-brouwn, .modal-brouwn .modal-body-brouwn {
+    color: #fff;
+    background-color: #795548 !important;
+}
+.bg-pink, .callout.callout-pink, .alert-pink, .label-pink, .modal-pink .modal-body-pink {
+    color: #fff;
+    background-color: #e91e63 !important;
+}
+.bg-orange, .callout.callout-orange, .alert-orange, .label-orange, .modal-orange .modal-body-orange {
+    color: #fff;
+    background-color: #ff5722 !important;
+}
+
+.user-profile-60-img{
+    margin: 0 auto;
+    width: 60px;
+    padding: 3px;
+    border: 1px solid #d2d6de;
+}

@@ -1,0 +1,45 @@
+/*club controll panel css*/
+
+/* start style for filp div */
+ .flip3d{
+ 	width: 170px ;
+ 	height: 170px ;
+ 	margin: 10px ;
+ 	//float: right ;
+ } 
+ .flip3d .front{
+ 	padding: 5px ;
+ 	position: absolute ;
+ 	transform: perspective( 600px ) rotateY( 0deg ) ;
+ 	background: #3c8dbc; ;
+ 	color: #fff ;
+ 	width: 170px ;
+ 	height: 170px ;
+ 	border-radius: 10px ;
+ 	backface-visibility: hidden ;
+ 	transition: transform .5s linear 0s ;
+ }
+ .flip3d .back{
+ 	padding: 5px ;
+ 	position: absolute ;
+ 	transform: perspective( 600px ) rotateY( 180deg ) ;
+ 	background: #fff ;
+ 	color: #3c8dbc; ;
+ 	width: 170px ;
+ 	height: 170px ;
+ 	border-radius: 10px ;
+ 	border: 1px dotted #3c8dbc; ;
+ 	backface-visibility: hidden ;
+ 	transition: transform .5s linear 0s ;
+ }
+ .flip3d:hover .front{
+ 	transform: perspective( 600px ) rotateY( -180deg ) ;
+ }
+ .flip3d:hover .back{
+ 	transform: perspective( 600px ) rotateY( 0deg ) ;
+ }
+ .sura_link{
+ 	color: #3c8dbc; ;
+ 	font-size: 18px ;
+ }
+/* end style for filp div */
