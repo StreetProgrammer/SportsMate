@@ -173,13 +173,13 @@ jQuery(function ($) {
             }                
         });
 
-        jQuery(document).ready(function(){
-            $(".dropdown").hover(
+        /* jQuery(document).ready(function(){
+            $(".dropdown").on('click',
                 function() { $('.dropdown-menu', this).fadeIn("fast");
                 },
                 function() { $('.dropdown-menu', this).fadeOut("fast");
             });
-        });
+        }); */
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////

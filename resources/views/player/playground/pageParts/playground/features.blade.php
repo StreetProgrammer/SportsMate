@@ -16,7 +16,7 @@
   //print_r($attributes);
 @endphp
 <div class="col-md-12">
-  <h4>features</h4>
+  <h4>{{ trans('player.features') }}</h4>
   <hr style="margin:5px 0px;border-top: 2px solid #06774a;">
 </div>
 
@@ -41,7 +41,7 @@
                       font-size: 15px;
                       border-radius: 50px;"
             >
-              {{ $key }} 
+              {{ trans("player.$key") }}
             </span>
           </h3>
           {{--<p class="text-center" style="color: #06774a;font-size: 13px;">

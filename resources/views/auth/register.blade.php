@@ -1,17 +1,32 @@
 <html>
   <head>
     
-     <title>{{ trans('club.loginTitle') }}</title>
+     <title>{{ trans('player.loginTitle') }}</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" type="text/css" href="{{ url('/') }}/player/css/style.css">
     <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-rtl/3.4.0/css/bootstrap-rtl.css"> -->
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/flexslider/2.6.3/flexslider.min.css">
     <!--===============================================================================================-->  
-    <link rel="shortcut icon" type="image/png" href="{{ Storage::url(setting()->icon) }}"/>  
+    <link rel="shortcut icon" type="image/png" href="{{ Storage::url(setting()->icon) }}"/>
+     @if (direction() == 'ltr')
+      <!-- <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
+      <link rel="stylesheet" href="{{ url('/') }}/design/AdminLTE/bower_components/bootstrap/dist/css/bootstrap.min.css">
+      <link rel="stylesheet" href="{{ url('/') }}/player/css/style.css">
+
+    @else
+      <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-rtl/3.4.0/css/bootstrap-rtl.css">
+      <link rel="stylesheet" href="{{ url('/') }}/player/css/rtl.css">
+      <link href="https://fonts.googleapis.com/css?family=Cairo" rel="stylesheet">
+      <style>
+        body{
+          font-family: 'Cairo', sans-serif;
+        }
+      </style>
+    @endif  
   <!--===============================================================================================-->
     <link rel="stylesheet" type="text/css" href="{{ url('/') }}/player/fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
   <!--===============================================================================================-->
@@ -54,7 +69,7 @@
                                 @if ($errors->has('name'))
                                     {{ $errors->first('name') }}
                                 @else
-                                    name Field is required
+                                    {{ trans('player.name_Field_is_required') }}
                                 @endif
 
                                 {{------------------------}}"
@@ -112,7 +127,7 @@
                                 {{------------------------}}"
             >
             <input class="input100" type="password" name="password" placeholder="Password">
-            <span class="focus-input100"></span>
+            <span class="focus-input100">ggwgw</span>
             <span class="symbol-input100">
               <span class="lnr lnr-lock"></span>
             </span>

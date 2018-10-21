@@ -11,8 +11,20 @@
 	<div class="panel panel-default shade top-bottom-border">
 
       <!--------------------->
-        <div class="panel-heading text-center shade bottom-border">
-        <h4 style="color: #06774a;margin: 5px 0px">{{$challenge->challengeSport->en_sport_name}} Playgrounds</h4>
+        <div class="panel-heading text-center shade bottom-border"> 
+          @if ( direction() == 'ltr' )
+            <h4 style="color: #06774a;margin: 5px 0px">
+            {{$challenge->challengeSport->en_sport_name}}
+            {{ trans('player.All_Available_Sport_Playgrounds') }}
+            </h4>
+            {{ trans('player.Desc_All_Available_Sport_Playgrounds') }}
+          @else
+          <h4 style="color: #06774a;margin: 5px 0px">
+            {{ trans('player.All_Available_Sport_Playgrounds') }}
+            {{$challenge->challengeSport->ar_sport_name}}
+            </h4>
+            {{ trans('player.Desc_All_Available_Sport_Playgrounds') }}
+          @endif
         </div>
 {{------------------------------------------------------------}}
 <!--------------->

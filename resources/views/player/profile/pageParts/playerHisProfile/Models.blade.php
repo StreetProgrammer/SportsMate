@@ -10,7 +10,7 @@
           <div class="modal-header" style="color: #fff;background-color: #06774a !important;">
             <button type="button" class="close" data-dismiss="modal" style="color:#fff">&times;</button>
             <h4 class="modal-title" >
-              Edit Main Information 
+              {{ trans('player.Edit_Main_Information') }} 
               <span id="profileInfoLoader" style="display:none;">
                 <i class="fa fa-circle-o-notch fa-spin" style="font-size:24px"></i>
               </span>
@@ -21,13 +21,13 @@
               <div class="col-md-12">
                 <div id="editMainInfoMessage" class="alert alert-danger text-center" style="display:none">
                   <h4><i class="fa fa-warning"></i></h4>
-                  <p style="font-size: 90%;color: #a94442;">
-                    please, check errors and try again .
+                  <p style="font-size: 90%;color: #3c763d;">
+                    {{ trans('player.check_wrong_entries_and_try_again') }}
                   </p>
                 </div>
               <form action="">
                     <div class="form-group">
-                      <label for="name">Name:</label>
+                      <label for="name">{{ trans('player.Name') }} :</label>
                       <input type="text" 
                               name="name" 
                               class="sm-inputs form-control" 
@@ -36,7 +36,7 @@
                       >
                     </div>
                     <div class="form-group">
-                      <label for="email">Email address:</label>
+                      <label for="email">{{ trans('player.Email_address') }} :</label>
                       <input type="email" 
                               name="email" 
                               class="sm-inputs form-control"  
@@ -44,7 +44,7 @@
                       >
                     </div>
                     <div class="form-group">
-                      <label for="phone">phone number:</label>
+                      <label for="phone">{{ trans('player.Phone_Number') }} :</label>
                       <input type="phone" 
                               name="p_phone" 
                               class="sm-inputs form-control" 
@@ -58,7 +58,7 @@
 
                   <select class="sm-inputs form-control input-xs" name="p_city" id="governorate">
 
-                      <option value="">Select Governorate</option>
+                      <option value="">{{ trans('player.Select_Governorate') }}</option>
 
                     @foreach ($governorate as $gov)
 
@@ -68,7 +68,11 @@
                             echo ($user->playerProfile->p_city == $gov->id ? ' selected="selected" ' : '');
                           @endphp
                         >
+                          @if (direction() == 'ltr')
                             {{ $gov->g_en_name }}
+                          @else
+                            {{ $gov->g_ar_name }}
+                          @endif
                         </option>
 
                     @endforeach
@@ -82,26 +86,25 @@
 
                     <option value="">Select Area</option>
                     @foreach ($governorate as $goov) <!--loop throw each city -->
-
                         @foreach ($goov->areas as $area) <!--loop throw each city->area -->
-
                           <!--check if we are in clubBranche city -->
                           @if ($area->a_governorate_id == $user->playerProfile->p_city)
-
                             <option
                               value="{{ $area->id }}"
                             @php
                               echo ($user->playerProfile->p_area == $area->id ? ' selected="selected" ' : '');
                             @endphp
                             >
-                              {{ $area->a_en_name }}
+                              @if (direction() == 'ltr')
+                                {{ $area->a_en_name }}
+                              @else
+                                {{ $area->a_ar_name }}
+                              @endif
                             </option>
 
                           @endif
-
-
                         @endforeach
-                  @endforeach
+                    @endforeach
 
                   </select>
                 </div>
@@ -117,7 +120,7 @@
                   <br>
 
                   <div class="form-group">
-                      <label for="p_address">Address:</label>
+                      <label for="p_address">{{ (trans('player.Address')) }} :</label>
                       <input type="text" 
                               name="p_address" 
                               class="sm-inputs form-control" 
@@ -127,7 +130,7 @@
                     </div>
 
                   <div class="form-group">
-                    <label for="p_gender">gender:</label>
+                    <label for="p_gender">{{ (trans('player.Gender')) }} :</label>
                     
                       <label class="radio-inline" style="font-size: 15px;">
                         <input type="radio" 
@@ -154,7 +157,7 @@
                   </div>
 
                   <div class="form-group">
-                    <label for="p_preferred_gender">interested in:</label>
+                    <label for="p_preferred_gender">{{ trans('player.Interested_in') }} :</label>
                     
                       <label class="radio-inline" style="font-size: 15px;">
                         <input type="radio" 
@@ -196,7 +199,7 @@
                   </div>
               
                   <div class="form-group">
-                    <label for="pwd">birth date:</label>
+                    <label for="pwd">{{ trans('player.birth_date') }} :</label>
                     <input type="date" 
                             class="sm-inputs form-control" 
                             id="p_born_date"
@@ -210,7 +213,7 @@
                     
                   <div class="col-md-10">
                     <p style="font-size: 14px;color: #333;">
-                      <label for="pwd">Password:</label>
+                      <label for="pwd">{{ trans('player.Password') }} :</label>
                       <input type="password" name="password" class="sm-inputs form-control" value="">
                     </p>
                   </div>
@@ -227,7 +230,7 @@
                   <div class="clearfix"></div>
                 
                    <div class="form-group">
-                    <label for="user_is_active">Account Status:</label>
+                    <label for="user_is_active">{{ trans('player.Account_Status') }} :</label>
                     
                       <label class="radio-inline" style="font-size: 15px;">
                         <input type="radio" 
@@ -237,7 +240,7 @@
                           echo ($user->user_is_active == 1 ? ' checked="checked" ' : '');
                         @endphp
                         >
-                        <span style="font-size: 120%;color: #06774a;">activated</span>    
+                        <span style="font-size: 120%;color: #06774a;">{{ trans('player.Activated') }}</span>    
                       </label>
                     
                       <label class="radio-inline" style="font-size: 15px;">
@@ -248,7 +251,7 @@
                           echo ($user->user_is_active == 0 ? ' checked="checked" ' : '');
                         @endphp
                         >
-                        <span style="font-size: 120%;color: #06774a;">deactivated</span>   
+                        <span style="font-size: 120%;color: #06774a;">{{ trans('player.Deactivated') }}</span>   
                       </label>
                     
                   </div>
@@ -258,14 +261,13 @@
             </div>
           </div>
           <div class="modal-footer" style="color: #fff;background-color: #06774a !important;">
-            <!-- <button class="btn btn-warning" id="updatePlayerMainInfo" style="background:#ff9800">Update</button> -->
             <button 
                   type="button"
                   style="background: #ff9800 !important; color: #fff !important;border-color:#ddd;box-shadow: 1px 0px 0px #eee;" 
                   class="btn sm-inputs btn-warning"
                   id="updatePlayerMainInfo" 
             >
-              Update
+              {{ trans('player.Update') }}
             </button>
             <button 
                   type="button"
@@ -273,7 +275,7 @@
                   class="btn sm-inputs btn-default" 
                   data-dismiss="modal"
             >
-              Close
+              {{ trans('player.Close') }}
             </button>
           </div>
         </div>
@@ -294,7 +296,7 @@
               <div class="modal-header" style="color: #fff;background-color: #06774a !important;">
                 <button type="button" class="close" data-dismiss="modal" style="color:#fff">&times;</button>
                 <h4 class="modal-title" >
-                  Edit Sports Information 
+                  {{ trans('player.Edit_Sports_Information') }} 
                   <span id="sportsInfoLoader" style="display:none;">
                     <i class="fa fa-circle-o-notch fa-spin" style="font-size:24px"></i>
                   </span>
@@ -310,7 +312,7 @@
                       class="btn sm-inputs btn-default" 
                       data-dismiss="modal"
                 >
-                  Close
+                  {{ trans('player.Close') }}
                 </button>
               </div>
           </div>
@@ -330,7 +332,7 @@
               <div class="modal-header" style="color: #fff;background-color: #06774a !important;">
                 <button type="button" class="close" data-dismiss="modal" style="color:#fff">&times;</button>
                 <h4 class="modal-title" >
-                  Edit Vacant Time 
+                  {{ trans('player.Edit_Vacant_Time') }} 
                   <span id="vacantInfoLoader" style="display:none;">
                     <i class="fa fa-circle-o-notch fa-spin" style="font-size:24px"></i>
                   </span>
@@ -346,7 +348,7 @@
                       class="btn sm-inputs btn-default" 
                       data-dismiss="modal"
                 >
-                  Close
+                  {{ trans('player.Close') }}
                 </button>
               </div>
           </div>
@@ -365,36 +367,31 @@
               <div class="modal-header" style="color: #fff;background-color: #06774a !important;">
                 <button type="button" class="close" data-dismiss="modal" style="color:#fff">&times;</button>
                 <h4 class="modal-title" >
-                  Add New Event 
+                  {{ trans('player.Add_New_Event') }} 
                   <span id="eventInfoLoader" style="display:none;">
                     <i class="fa fa-circle-o-notch fa-spin" style="font-size:24px"></i>
                   </span>
                 </h4>
               </div>
               <div id="getPlayerVacants" class="modal-body">
-
                 {{----------------------------------------------------------------}}
-
                 @php
-
                   $days = DB::table('days')->get();
                   $hours = DB::table('hours')->get();
-
                 @endphp
-
                 <div class="row">
                   <div class="col-md-12">
                     <div id="eventErrors" class="alert alert-success text-center" style="display:none">
                       <div id="eventErrorsSuccess" style="display:none">
                         <h4><i class="fa fa-check-circle"></i></h4>
-                        <p style="font-size: 90%;color: #a94442;">
-                          New Event Created Successfully
+                        <p style="font-size: 90%;color: #3c763d;">
+                        {{ trans('player.New_Event_Created_Successfully') }}  
                         </p>
                       </div>
                       <div id="eventErrorsFaild" style="display:none">
                         <h4><i class="fa fa-warning"></i></h4>
                         <p style="font-size: 90%;color: #a94442;">
-                          check errors and try again
+                          {{ trans('player.check_wrong_entries_and_try_again') }}
                         </p>
                       </div>  
                     </div>
@@ -407,8 +404,11 @@
                       <br>
                         <div class="col-md-6">
                           <div class="form-group">
-                            <label class="col-lg-3 ">Range <span class="slider-value" id="E_preferred_rate_value"></span></label>
-                            <div class="col-lg-9">
+                            <label class="col-lg-5 ">
+                              {{ trans('player.preferred_rate') }} 
+                              <span class=" span-number slider-value" id="E_preferred_rate_value">5</span>
+                            </label>
+                            <div class="col-lg-7">
                               <div class="ui-select">
                                 <div class="""slidecontainer">
                                   <input class="slider form-control input-xs"
@@ -429,13 +429,19 @@
 
                         <div class="col-md-6">
                           <div class="form-group">
-                            <label class="col-lg-2 ">Sport</label>
+                            <label class="col-lg-2 ">{{ trans('player.Sport') }}</label>
                             <div class="col-lg-10">
                               <div class="ui-select">
                                 <select name="sport_id" style="padding: 0 5px 0 10px;" class="sm-inputs form-control">
 
                                    @foreach ($user->sports as $sport)
-                                    <option value="{{ $sport->id }}">{{ $sport->en_sport_name }}</option>
+                                    <option value="{{ $sport->id }}">
+                                      @if (direction() == 'ltr')
+                                        {{ $sport->en_sport_name }}
+                                      @else
+                                        {{ $sport->ar_sport_name }}
+                                      @endif
+                                    </option>
                                   @endforeach
 
                                 </select>
@@ -447,7 +453,7 @@
                         <br><br><br>
                         <div class="col-md-4">
                           <div class="form-group">
-                            <label class="col-lg-2 control-label">Day</label>
+                            <label class="col-lg-2 control-label">{{ trans('player.Day') }}</label>
                             <div class="col-lg-10">
                               <div class="ui-select">
                                 <input type="date" 
@@ -466,7 +472,7 @@
                         
                         <div class="col-md-4">
                           <div class="form-group">
-                            <label class="col-lg-2 control-label">From</label>
+                            <label class="col-lg-2 control-label">{{ trans('player.From') }}</label>
                             <div class="col-lg-10">
                               <div class="ui-select">
                                 <select name="E_from" style="padding: 0 5px 0 10px;" class="sm-inputs form-control">
@@ -483,7 +489,7 @@
 
                         <div class="col-md-4">
                           <div class="form-group">
-                            <label class="col-lg-2 control-label">To</label>
+                            <label class="col-lg-2 control-label">{{ trans('player.To') }}</label>
                             <div class="col-lg-10">
                               <div class="ui-select">
                                 <select  name="E_to" style="padding: 0 5px 0 10px;" class="sm-inputs form-control">
@@ -507,7 +513,7 @@
                         class="btn sm-inputs btn-primary"
                         id="addNewEvent"    
                 >
-                    Add
+                    {{ trans('player.Add_New_Event') }}
                 </button>
                 <button 
                       type="button"
@@ -515,7 +521,7 @@
                       class="btn sm-inputs btn-default" 
                       data-dismiss="modal"
                 >
-                  Close
+                  {{ trans('player.Close') }}
                 </button>
               </div>
           </div>
@@ -537,7 +543,7 @@
               <div class="modal-header" style="color: #fff;background-color: #06774a !important;">
                 <button type="button" class="close" data-dismiss="modal" style="color:#fff">&times;</button>
                 <h4 class="modal-title" >
-                  Challenge {{ $user->name }} 
+                {{ trans('player.Add_New_Challenge_With') }} {{ $user->name }} 
                   <span id="challengeInfoLoader" style="display:none;">
                     <i class="fa fa-circle-o-notch fa-spin" style="font-size:24px"></i>
                   </span>
@@ -559,14 +565,14 @@
                     <div id="challengeErrors" class="alert alert-success text-center" style="display:none">
                       <div id="challengeErrorsSuccess" style="display:none">
                         <h4><i class="fa fa-check-circle"></i></h4>
-                        <p style="font-size: 90%;color: #a94442;">
-                          New Challenge Created Successfully
+                        <p style="font-size: 90%;color: ##3c763d;">
+                        {{ trans('player.New_Challenge_Created_Successfully') }}  
                         </p>
                       </div>
                       <div id="challengeErrorsFaild" style="display:none">
                         <h4><i class="fa fa-warning"></i></h4>
-                        <p style="font-size: 90%;color: #a94442;">
-                          check errors and try again
+                        <p style="font-size: 90%;color: ##3c763d;">
+                          {{trans('player.check_wrong_entries_and_try_again')}}
                         </p>
                       </div>  
                     </div>
@@ -574,40 +580,22 @@
 
                   <div class="col-md-12">
 
-                      
                       {{ csrf_field() }}
-                     {{-- <br>
                         <div class="col-md-6">
                           <div class="form-group">
-                            <label class="col-lg-3 ">Range <span id="E_preferred_rate_value"></span></label>
-                            <div class="col-lg-9">
-                              <div class="ui-select">
-                                <div class="""slidecontainer">
-                                  <input class="slider form-control input-xs"
-                                    id="E_preferred_rate" 
-                                    type="range"
-                                    name="preferred_rate"
-                                    min="0"
-                                    max="10"
-                                    step="1"
-                                    value="5"
-                                >
-                                  
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>--}}
-
-                        <div class="col-md-6">
-                          <div class="form-group">
-                            <label class="col-lg-2 ">Sport</label>
+                            <label class="col-lg-2 ">{{ trans('player.Sport') }}</label>
                             <div class="col-lg-10">
                               <div class="ui-select">
                                 <select name="sport_id" style="padding: 0 5px 0 10px;" class="sm-inputs form-control">
 
                                    @foreach ($user->sports as $sport)
-                                    <option value="{{ $sport->id }}">{{ $sport->en_sport_name }}</option>
+                                    <option value="{{ $sport->id }}">
+                                      @if (direction() == 'ltr')
+                                        {{ $sport->en_sport_name }}
+                                      @else
+                                        {{ $sport->ar_sport_name }}
+                                      @endif
+                                      </option>
                                   @endforeach
 
                                 </select>
@@ -619,7 +607,7 @@
                         <!-- <br><br><br> -->
                         <div class="col-md-6">
                           <div class="form-group">
-                            <label class="col-lg-2 control-label">Day</label>
+                            <label class="col-lg-2 control-label">{{ trans('player.Day') }}</label>
                             <div class="col-lg-10">
                               <div class="ui-select">
                                 <input type="date" 
@@ -639,7 +627,7 @@
                         <br><br><br>
                         <div class="col-md-6">
                           <div class="form-group">
-                            <label class="col-lg-2 control-label">From</label>
+                            <label class="col-lg-2 control-label">{{ trans('player.From') }}</label>
                             <div class="col-lg-10">
                               <div class="ui-select">
                                 <select name="C_from" style="padding: 0 5px 0 10px;" class="sm-inputs form-control">
@@ -656,7 +644,7 @@
 
                         <div class="col-md-6">
                           <div class="form-group">
-                            <label class="col-lg-2 control-label">To</label>
+                            <label class="col-lg-2 control-label">{{ trans('player.To') }}</label>
                             <div class="col-lg-10">
                               <div class="ui-select">
                                 <select  name="C_to" style="padding: 0 5px 0 10px;" class="sm-inputs form-control">
@@ -680,7 +668,7 @@
                         class="btn sm-inputs btn-primary"
                         id="addNewChallenge"    
                 >
-                    Add
+                  {{ trans('player.Add_Challenge') }}
                 </button>
                 <button 
                       type="button"
@@ -688,7 +676,7 @@
                       class="btn sm-inputs btn-default" 
                       data-dismiss="modal"
                 >
-                  Close
+                  {{ trans('player.Close') }}
                 </button>
               </div>
           </div>

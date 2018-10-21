@@ -12,7 +12,7 @@
     <div id="vacantErrors" class="alert alert-danger text-center" style="display:none">
           <h4><i class="fa fa-warning"></i></h4>
           <p style="font-size: 90%;color: #a94442;">
-            check errors and try again
+            {{ trans('player.check_wrong_entries_and_try_again') }}
           </p>
         </div>
   </div>
@@ -23,7 +23,7 @@
       
       <div class="col-md-3">
         <div class="form-group">
-          <label class="col-lg-2 control-label">Day</label>
+          <label class="col-lg-2 control-label">{{ trans('player.Day') }}</label>
           <div class="col-lg-10">
             <div class="ui-select">
               <select name="day" style="padding: 0 5px 0 10px;" class="sm-inputs form-control">
@@ -40,7 +40,7 @@
       
       <div class="col-md-3">
         <div class="form-group">
-          <label class="col-lg-2 control-label">From</label>
+          <label class="col-lg-2 control-label">{{ trans('player.From') }}</label>
           <div class="col-lg-10">
             <div class="ui-select">
               <select name="from" style="padding: 0 5px 0 10px;" class="sm-inputs form-control">
@@ -57,7 +57,7 @@
 
       <div class="col-md-3">
         <div class="form-group">
-          <label class="col-lg-2 control-label">To</label>
+          <label class="col-lg-2 control-label">{{ trans('player.To') }}</label>
           <div class="col-lg-10">
             <div class="ui-select">
               <select id="user_time_zone" name="to" style="padding: 0 5px 0 10px;" class="sm-inputs form-control">
@@ -80,7 +80,7 @@
                 style="background: #ff5522 !important; color: #fff !important;border-color:#ddd;"
                 class="btn sm-inputs btn-primary"
                 id="addNewVacantTime" 
-                value="Add">
+                value="{{ trans('player.Add') }}">
           </div>
         </div>
       </div>

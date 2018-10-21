@@ -23,7 +23,13 @@
           </div>
 
           <div class="sport-desc" style="padding: 10px;margin-top: 10px">
-            <h3>{{ $Sport->en_sport_name }}</h3>
+            <h3>
+              @if ( direction() == 'ltr' )
+               {{ $Sport->en_sport_name }}   
+              @else
+               {{ $Sport->ar_sport_name }}   
+              @endif
+            </h3>
             <p>{{ $Sport->sport_desc }}</p>
           </div>
         </div>
@@ -42,7 +48,7 @@
               </div>
               <div class="offer-content">
                 <h3 class="lead" style="font-size:16px;font-weight:bold;">
-                  Playgrounds
+                  {{ trans('player.playground') }}
                   <span class="text-center badge bg-danger" 
                         style="padding: 7px 9px 7px;
                                background-color: #06774a;
@@ -68,7 +74,7 @@
               </div>
               <div class="offer-content">
                 <h3 class="lead" style="font-size:16px;font-weight:bold;">
-                  Players
+                  {{ trans('player.player') }}
                   <span class="text-center badge bg-danger" 
                         style="padding: 7px 9px 7px;
                                background-color:#ffa500;
@@ -94,7 +100,7 @@
               </div>
               <div class="offer-content">
                 <h3 class="lead" style="font-size:16px;font-weight:bold;">
-                  Challenges
+                  {{ trans('player.challenge') }}
                   <span class="text-center badge bg-danger" 
                         style="padding: 7px 9px 7px;
                                background-color: #d9534f;
@@ -120,7 +126,7 @@
               </div>
               <div class="offer-content">
                 <h3 class="lead" style="font-size:16px;font-weight:bold;">
-                  Events
+                  {{ trans('player.event') }}
                   <span class="text-center badge bg-danger" 
                         style="padding: 7px 9px 7px;
                                background-color: #428bca;
@@ -147,7 +153,7 @@
               </div>
               <div class="offer-content">
                 <h3 class="lead" style="font-size:16px;font-weight:bold;">
-                  Trainers
+                  {{ trans('player.trainer') }}
                   <span class="text-center badge bg-danger" 
                         style="padding: 7px 9px 7px;
                                background-color: #5bc0de;
@@ -173,7 +179,7 @@
               </div>
               <div class="offer-content">
                 <h3 class="lead" style="font-size:16px;font-weight:bold;">
-                  Referrees
+                  {{ trans('player.referee') }}
                   <span class="text-center badge bg-danger" 
                         style="padding: 7px 9px 7px;
                                background-color: #969796;

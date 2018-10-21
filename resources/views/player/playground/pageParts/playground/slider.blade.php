@@ -18,6 +18,9 @@
           foreach ($playground->Photos as $photo){
             $photos[$photo->id] = ['path' => $photo->path, 'playground' => $photo->owner_id];
           }
+        }else{
+          $photos[1] = ['path' => url('/') . '/player/img/football-playground.jpg',
+                        'playground' => $playground->id];
         }
 
 

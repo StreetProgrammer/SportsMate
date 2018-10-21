@@ -30,7 +30,13 @@
         </div>
       @endforeach
   @else
-     no record match your search 
+     <div class="row text-center">
+			<div class="col-md-12" style="padding: 70px;">
+				<span class="shade" style="font-size: 20px;color: #9e9e9e;padding: 40px;">
+					{{ trans('player.no_result_match_your_search') }}
+				</span>
+			</div>
+		</div>
   @endif
     
   </div>

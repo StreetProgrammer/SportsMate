@@ -1,4 +1,4 @@
-<div id="event-data-tabs" style="margin-bottom:10px">
+{{-- <div id="event-data-tabs" style="margin-bottom:10px">
   <input type="hidden" name="user_id" value="{{ $user->id}}">
   <div class="shade row text-center" style="background-color: #9E9E9E;;color:#fff ;padding: 5px 0;">
     <div class="col-xs-3">
@@ -30,7 +30,7 @@
       </span>
     </div>
   </div>
-</div>
+</div> --}}
 
 
 <div id="event-data-display" class="shade scrollable">

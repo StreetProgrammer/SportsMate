@@ -9,7 +9,7 @@
               border-radius: 0px;
               padding:3px 15px"
     >
-      <h4 style="color: #06774a;margin: 5px 0px">candidate</h4>
+      <h4 style="color: #06774a;margin: 5px 0px">{{ trans('player.Challenge_Candidate') }}</h4>
     </div>
     <a href="{{url('/')}}/profile/{{sm_crypt($challenge->candidate->id)}}" >
       <div class="profile-img-container text-center" style="padding: 25px 0px 0px 0px;">
@@ -76,7 +76,7 @@
         <p>
           @if ($challenge->C_YesOrNo == 0)
               <p style="font-size:95%;color:#06774a;">
-                  No decision Yet
+                  {{ trans('player.No_decision_Yet') }}
               </p>
           @elseif ($challenge->C_YesOrNo == 1)
               <span class="a-holding-divs" 

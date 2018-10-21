@@ -86,7 +86,7 @@ class SearchController extends Controller
 	public function getPlaygroundSearchResults(Request $request, PlaygroundFilters $filters)
 	{
 		//return $request ;
-		$playgrounds = Playground::with('coverPhoto')->filter($filters)->get() ;
+		$playgrounds = Playground::with('Photos')->filter($filters)->get() ;
 		//return $playgrounds ;
 		$view = view('player.search.pageParts.playground-search.playground-result', compact('playgrounds', 'model') )->render();
 		return response($view);
@@ -97,7 +97,7 @@ class SearchController extends Controller
 	public function freshPlaygroundSearchResults(Request $request)
 	{
 		
-		$playgrounds =  Playground::with('coverPhoto')->where('our_is_active', '=', 1)
+		$playgrounds =  Playground::with('Photos')->where('our_is_active', '=', 1)
 		        				->where('type', '=', 1)
 		        				->get() ;
 		//return $playgrounds ;		

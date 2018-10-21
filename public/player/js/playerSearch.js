@@ -1,3 +1,44 @@
+//////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////// start change tabs and contents ///////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////
+$(document).on('click', ".players-playgrounds-events", function (e) {
+	//alert('ddd');
+	var id = $(this).attr('id');
+	//var user_id = $("input[name=user_id]").val();
+	alert(id) ;
+	//$('.' + type).show();
+
+	if ($(this).hasClass('tab-li')) { //this is the start of our condition 
+		$('.col-xs-4 span.players-playgrounds-events').addClass('tab-li');
+		$('.col-xs-4 span.players-playgrounds-events').removeClass('tab-li-focus');
+		$(this).removeClass('tab-li');
+		$(this).addClass('tab-li-focus');
+
+		//var type = 'evechares' ;
+		//var sport = 0;
+		switch (id) {
+			case 'players':
+				var route = '/freshPlayerSearchResults';
+				break;
+			case 'playgrounds':
+				var route = '/getPlaygroundSearchResults';
+				break;
+			case 'events':
+				var route = '/getPlaygroundSearchResults';
+				break;
+			default:
+				var route = '/freshPlayerSearchResults';
+		}
+		setTimeout(function () {
+			$('#search-result').load(route).fadeIn('slow');
+			//$('.' + type).hide();
+		}, 1000);
+
+	}
+});
+/////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////// start change tabs and contents //////////////////
+/////////////////////////////////////////////////////////////////////////////////////
 
 	/* to get search results and display it  */
 	$(document).on('click', "#player_filtters", function () {

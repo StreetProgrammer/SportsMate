@@ -19,7 +19,12 @@
       <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-rtl/3.4.0/css/bootstrap-rtl.css">
       <link rel="stylesheet" href="{{ url('/') }}/player/css/rtl.css">
-
+      <link href="https://fonts.googleapis.com/css?family=Cairo" rel="stylesheet">
+      <style>
+        body{
+          font-family: 'Cairo', sans-serif;
+        }
+      </style>
     @endif
     <link rel="stylesheet" href="{{ url('/') }}/css/croppie.css">
     <!-- fullCalendar -->

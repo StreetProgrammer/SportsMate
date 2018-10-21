@@ -3,7 +3,7 @@
 
       <!--------------------->
       <div class="panel-heading text-center shade bottom-border">
-        <h4 style="color: #06774a;margin: 5px 0px">creator</h4>
+        <h4 style="color: #06774a;margin: 5px 0px">{{ trans('player.Event_creator') }}</h4>
       </div>
         <a href="{{url('/')}}/profile/{{sm_crypt($event->creator->id)}}">
 	      <div class="profile-img-container text-center" style="padding: 25px 0px 0px 0px;">

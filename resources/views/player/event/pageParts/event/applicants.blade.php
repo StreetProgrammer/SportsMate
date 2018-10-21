@@ -5,7 +5,8 @@
       <!--------------------->
       <div class="panel-heading text-center shade bottom-border">
         <h4 style="color: #06774a;margin: 5px 0px">
-          applicants
+          {{ trans('player.applicants') }}
+          
         {{--
           here we check if event creator who logged in so no need for this,
           but if any other users who can apply for one time for that event
@@ -15,7 +16,7 @@
 
           @if ($event->Applicants->contains(Auth::id()) == true)
               <span class="pull-right" style="font-size:12px">
-                  applied since
+                  {{ trans('player.applied_since') }}
                   @php
                       $row = DB::table('event_user')
                       ->where('event_id', '=', $event->id)
@@ -39,7 +40,7 @@
                                   border-color: #ddd;
                                   box-shadow: 1px 0px 0px #eee;" 
                   >
-                    apply
+                    {{ trans('player.apply_for_Event') }}
                     <span id="applyLoader" style="display: none">
                       <i class="fa fa-circle-o-notch fa-spin" style="font-size:15px"></i>
                     </span>
@@ -49,6 +50,7 @@
 
       @endif
       </h4>
+      {{ trans('player.Desc_applicants') }}
       </div>
       @if ($event->applicants->count() > 0)
         <div class="row">
@@ -91,21 +93,13 @@
                   @if ( $event->E_creator_id == Auth::id() )
                     {{-- now will check if no candidate and event date still in future --}}
                     @if ( $event->E_candidate_id == '' && $event->E_date > date("Y-m-d"))
-                        {{--<span>
-                          <form method="POST" action="{{url('Event')}}/{{$event->id}}/Accept">
-                              {{ csrf_field() }}
-                              <input type="hidden" name="accepted" value="{{ $applicant->id }}">
-                              <input type="submit" class="btn btn-primary btn-xs" value="Accept">
-
-                          </form>
-                      </span>--}}
                        <button class="accept shade-2 btn sm-inputs btn-warning" 
                                 id="{{ $event->id }}_{{ $applicant->id }}_accept"
                                 style="background: #ff9800 !important;
                                         color: #fff !important;
                                         margin: -5px 0px 5px;" 
                         >
-                          accept
+                          {{ trans('player.accept_applicant') }}
                           <span id="{{ $event->id }}_{{ $applicant->id }}_acceptLoader" style="display: none">
                             <i class="fa fa-circle-o-notch fa-spin" style="font-size:15px"></i>
                           </span>
@@ -120,9 +114,7 @@
                         </span>
                     @endif
                   @else
-                    {{--@if ($applicant->id == Auth::id())
-                        <span class="">You Are Here</span>
-                    @endif--}}
+
                   @endif
               </div>
           </div>
@@ -136,7 +128,7 @@
                 padding: 50px"
         >
           <h3 style="color:#06774a;font-size:20px !important;">
-            <span>No one apply for this event till now</span>
+            <span>{{ trans('player.No_one_apply') }}</span>
           </h3>
         </div>
       @endif

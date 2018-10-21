@@ -2,7 +2,7 @@
     <div style="padding: 20px">
 		
 		<h4 style="color:#06774a;">
-            Player search
+            {{ trans('player.Player_search') }}
             <span id="player_filtters_loader" style="display:none;">
                 <i class="fa fa-circle-o-notch fa-spin" style="font-size:20px;color:#06774a;"></i>
             </span>
@@ -21,7 +21,7 @@
         </h4>
 		<hr>
         <div class="form-group">
-            <label for="name">Name :</label>
+            <label for="name">{{ trans('player.Name') }} :</label>
             <input type="text" 
                   name="player_filtters_name" 
                   class="sm-inputs form-control" 
@@ -31,20 +31,24 @@
         <br>
         
         <div class="form-group">
-            <label for="sport">sport</label>
+            <label for="sport">{{ trans('player.Sport') }}</label>
             <select class="sm-inputs form-control input-xs" 
                     name="player_filtters_sport" 
                     id="sport">
                 
                 @php $sports = DB::table('sports')->get() ; @endphp
-                <option value="">Sport</option>
+                <option value="">{{ trans('player.Sport') }}</option>
 
                 @foreach ($sports as $sport)
 
                     <option
                       value="{{ $sport->id }}"
                     >
-                        {{ $sport->en_sport_name }}
+                        @if ( direction() == 'ltr' )
+                            {{ $sport->en_sport_name }}    
+                        @else
+                            {{ $sport->ar_sport_name }}    
+                        @endif
                     </option>
 
                 @endforeach
@@ -53,7 +57,7 @@
         </div>
         <br>
         <div class="form-group">
-            <label for="p_gender">gender:</label>
+            <label for="p_gender">{{ trans('player.Gender') }}:</label>
             
               <label class="radio-inline" style="font-size: 15px;">
                 <input type="radio" 
@@ -74,7 +78,7 @@
         </div>
         <br>
         <div class="form-group">
-            <label for="player_filtters_preferred_gender">interested in:</label>
+            <label for="player_filtters_preferred_gender">{{ trans('player.Interested_in') }}:</label>
             
               <label class="radio-inline" style="font-size: 15px;">
                 <input type="radio" 
@@ -114,7 +118,7 @@
                 class="btn sm-inputs btn-warning" 
                 id="player_filtters"
             >
-                Update
+                {{ trans('player.filter') }}
             </button> 
         </div>
         

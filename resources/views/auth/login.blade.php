@@ -1,7 +1,7 @@
 <html>
   <head>
     
-     <title>{{ trans('club.loginTitle') }}</title>
+     <title>{{ trans('player.loginTitle') }}</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -11,7 +11,23 @@
    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-rtl/3.4.0/css/bootstrap-rtl.css"> -->
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/flexslider/2.6.3/flexslider.min.css">
     <!--===============================================================================================-->  
-    <link rel="shortcut icon" type="image/png" href="{{ Storage::url(setting()->icon) }}"/>  
+    <link rel="shortcut icon" type="image/png" href="{{ Storage::url(setting()->icon) }}"/>
+     @if (direction() == 'ltr')
+      <!-- <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
+      <link rel="stylesheet" href="{{ url('/') }}/design/AdminLTE/bower_components/bootstrap/dist/css/bootstrap.min.css">
+      <link rel="stylesheet" href="{{ url('/') }}/player/css/style.css">
+
+    @else
+      <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-rtl/3.4.0/css/bootstrap-rtl.css">
+      <link rel="stylesheet" href="{{ url('/') }}/player/css/rtl.css">
+      <link href="https://fonts.googleapis.com/css?family=Cairo" rel="stylesheet">
+      <style>
+        body{
+          font-family: 'Cairo', sans-serif;
+        }
+      </style>
+    @endif  
   <!--===============================================================================================-->
     <link rel="stylesheet" type="text/css" href="{{ url('/') }}/player/fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
   <!--===============================================================================================-->
@@ -32,14 +48,13 @@
   </head>
   <body>
 
-
   @include('site.layouts.nav.headerMenu')
 
     <!----Slider ----->
 
  
     <!-- #endregion Jssor Slider End -->
-<div class="limiter">
+<div class="limiter" style="font-family: 'Cairo', sans-serif; !important">
     <div class="container-login100">
       <div class="wrap-login100 p-l-50 p-r-50 p-t-77 p-b-30" style="padding-top: 20px;">
         <form class="login100-form validate-form" method="POST" action="{{ route('login') }}">
@@ -49,7 +64,7 @@
           </span>
 
           <div class="wrap-input100 validate-input m-b-16" data-validate = "Valid email is required: ex@abc.xyz">
-            <input type="email" name="email" value="{{ old('email') }}" placeholder="Email" class="input100">
+            <input type="email" name="email" value="{{ old('email') }}" placeholder="{{ trans('player.Email') }}" class="input100">
             <span class="focus-input100"></span>
             <span class="symbol-input100">
               <span class="lnr lnr-envelope"></span>
@@ -57,7 +72,7 @@
           </div>
 
           <div class="wrap-input100 validate-input m-b-16" data-validate = "Password is required">
-            <input class="input100" type="password" name="password" placeholder="Password">
+          <input class="input100" type="password" name="password" placeholder="{{ trans('player.Password') }}">
             <span class="focus-input100"></span>
             <span class="symbol-input100">
               <span class="lnr lnr-lock"></span>
@@ -71,7 +86,7 @@
                   {{ old('remember') ? 'checked' : '' }}
             >
             <label class="label-checkbox100" for="ckb1">
-              Remember me
+              {{ trans('player.Remember_me') }}
             </label>
           </div>
           
@@ -83,27 +98,27 @@
 
           <div class="text-center w-full p-t-42 p-b-22">
             <span class="txt1">
-              Or login with
+              {{ trans('player.Or_login_with') }}
             </span>
           </div>
 
           <a href="#" class="btn-face m-b-10">
-            <i class="fa fa-facebook-official"></i>
-            Facebook
+            <i class="fa fa-facebook-official"></i> 
+             {{ trans('player.Facebook') }}
           </a>
 
           <a href="#" class="btn-google m-b-10">
-            <img src="{{ url('/') }}/player/img/icons/icon-google.png" alt="GOOGLE">
-            Google
+            <img src="{{ url('/') }}/player/img/icons/icon-google.png" alt="GOOGLE"> 
+             {{ trans('player.Google') }}
           </a>
 
           <div class="text-center w-full p-t-115" style="padding-top:50px;">
             <span class="txt1">
-              Not a member?
+              {{ trans('player.Not_a_member?') }}
             </span>
 
             <a class="txt1 bo1 hov1" href="#">
-              Sign up now             
+              {{ trans('player.Sign_up_now') }}             
             </a>
           </div>
         </form>

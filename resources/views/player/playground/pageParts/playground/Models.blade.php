@@ -28,7 +28,7 @@
                   
                   <div class="col-md-4">
                     <div class="shade" style="background: #EEE; border: 1px solid #ddd;padding:5px">
-                      <h4>New Reservation</h4>
+                      <h4>{{ trans('player.New_Reservation') }}</h4>
                       <hr style="border-top: 2px solid #06774a;">
                       <p id="{{$playground->id}}_err" class="alert"></p>
                       <!-- start add reservation form -->
@@ -40,7 +40,7 @@
                           {{ csrf_field() }}
                         <input type="hidden" name="playgroundId" value="{{$playground->id}}">
                         <div class="form-group">
-                          <label class="col-lg-3 control-label">Date</label>
+                          <label class="col-lg-3 control-label">{{ trans('player.Date') }}</label>
                           <div class="col-lg-8">
                             <input 
                               class="date shade-2 sm-inputs form-control input-xs" 
@@ -58,14 +58,14 @@
                             $hours = DB::table('hours')->get();
                           @endphp
                           <div class="form-group">
-                            <label class="col-lg-3 control-label">From</label>
+                            <label class="col-lg-3 control-label">{{ trans('player.From') }}</label>
                             <div class="col-lg-8">
                                 <select id="{{$playground->id}}_from" 
                                         name="{{$playground->id}}_from" 
                                         class="date shade-2 sm-inputs form-control input-xs" 
                                         style="background: #ffffff !important;"
                                 >
-                                    <option value="">{{ trans('club.starts_at') }}</option>
+                                    <option value="">{{ trans('player.starts_at') }}</option>
                                   @foreach ($hours as $hour)
                                     <option value="{{ $hour->hour_id }}">{{ $hour->hour_format }}</option>
                                   @endforeach
@@ -75,14 +75,14 @@
                           </div>
 
                           <div class="form-group">
-                            <label class="col-lg-3 control-label">To</label>
+                            <label class="col-lg-3 control-label">{{ trans('player.To') }}</label>
                             <div class="col-lg-8">
                                 <select id="{{$playground->id}}_to" 
                                         name="{{$playground->id}}_to" 
                                         class="date shade-2 sm-inputs form-control input-xs" 
                                         style="background: #ffffff !important;"
                                 >
-                                    <option value="">{{ trans('club.ends_at') }}</option>
+                                    <option value="">{{ trans('player.ends_at') }}</option>
                                   @foreach ($hours as $hour)
                                     <option value="{{ $hour->hour_id }}">{{ $hour->hour_format }}</option>
                                   @endforeach
@@ -111,7 +111,7 @@
                                   type="submit" 
                                   class="submit btn btn-md btn-flat btn-primary"
                                   style="display: none;" 
-                                  value="Add"
+                                  value="{{ trans('player.Reserve') }}"
                                   name="{{$playground->id}}_add"
                                   id ="{{$playground->id}}_add"  
                                 >
@@ -138,7 +138,7 @@
                   class="btn sm-inputs btn-default" 
                   data-dismiss="modal"
             >
-              Close
+              {{ trans('player.Close') }}
             </button>
         </div>
       </div>

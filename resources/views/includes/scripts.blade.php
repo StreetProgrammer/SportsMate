@@ -1,5 +1,6 @@
 <script src="{{ asset('js/app.js') }}"></script>
 <script src="{{ asset('js/croppie.js') }}"></script>
+<script src="{{ asset('js/sweetalert.min.js') }}"></script>
 <script type="text/javascript">
 
 // start proccess of club Profile ImageFile crop in [[ register Proccess ]] to [[ store ]]
@@ -265,7 +266,7 @@ $logo_crop = $('#logo_crop').croppie({
  //end of proccess of branch banner crop
 
 </script>
-<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+{{-- <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script> --}}
 <script src="{{ asset('js/rate.js') }}" ></script>
 
 

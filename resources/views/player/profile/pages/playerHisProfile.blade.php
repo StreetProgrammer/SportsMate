@@ -14,28 +14,28 @@
 <section class="players-main">
   <div class="container">
     <div class="row">
-      <div class="col-md-12">
+      <div class="col-md-12 text-center">
 
         <div id="event-data-tabs" style="margin-bottom:10px">
           <input type="hidden" name="user_id" value="{{ $user->id }}">
           <div class="shade row text-center" style="background-color: #fff;;color:#06774a;padding: 15px 0;">
-            <div class="col-xs-4">
+            <div class="col-xs-4 text-center">
               <span id="events" class="evechares tab-li-focus">
-                events 
+               {{ trans('player.events') }}  
                 <span class="badge badge-warning">5</span>
                 <span class="events fa fa-circle-o-notch fa-spin" style="display: none;padding: 0px 10px;"></span>
               </span>
             </div>
-            <div class="col-xs-4">
+            <div class="col-xs-4 text-center">
               <span id="challenges" class="evechares tab-li">
-                challenges 
+                {{ trans('player.challenges') }} 
                 <span class="badge badge-warning">5</span>
                 <span class="challenges fa fa-circle-o-notch fa-spin" style="display: none;padding: 0px 10px;"></span>
               </span>
             </div>
-            <div class="col-xs-4">
+            <div class="col-xs-4 text-center">
               <span id="reservations" class="evechares tab-li">
-                reservations
+                {{ trans('player.reservations') }}
                 <span class="badge badge-warning">5</span>
                 <span class="reservations fa fa-circle-o-notch fa-spin" style="display: none;padding: 0px 10px;"></span>
               </span>

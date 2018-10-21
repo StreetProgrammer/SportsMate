@@ -57,7 +57,7 @@ class ClubProfilesController extends Controller
     public function registerClub(Request $request)
     {
         //return $request ;
-        /*$request = $this->validate(request(),
+        $validator = \Validator::make($request->all(),
                 [
                     'type'          => '',
                     'user_img'      => '',
@@ -77,13 +77,17 @@ class ClubProfilesController extends Controller
                     'name'      => 'Name',
                     'email'     => 'E-mail',
                     'password'  => 'Password',
-                ]);*/
+                ]);
+        // prepare data before create club main account info
+       
+        
+        if ($validator->fails()) {
 
-        $slugCode = substr(str_shuffle(str_repeat("0123456789", 5)), 0, 5);
+            return response()->json(['errors'=>$validator->errors()]);
+        }elseif (request()->type == 2) {
+             $slugCode = substr(str_shuffle(str_repeat("0123456789", 5)), 0, 5);
         $slug = str_slug($request['name'] . '-' . $slugCode, '-');
         $activateCode = substr(str_shuffle(str_repeat("0123456789abcdefghijklmnopqrstuvwxyz", 8)), 0, 8);
-
-        if (request()->type == 2) {
             //////////// IF Registering User type is Club ////////////
              $user = User::create([
                 'name'              => $request['name'],
@@ -428,6 +432,18 @@ class ClubProfilesController extends Controller
     }
 
     //%%%%%%%%%%%%%%%%%%% ajax functions for load partial views %%%%%%%%%%%%%%%%%%//
+
+    public function registerPageTop()
+    {
+        $governorate = governorate::with('areas')->get();
+        $id = Auth::user()->id ;
+        $club = User::find($id) ;
+        //$club = json_encode($Event) ;
+        //return $club ;
+
+        return view('club.register.pageParts.rejectedMessage', compact('club', 'governorate')) ;
+
+    }
 
     public function editMainRegisterInfo()
     {

@@ -59,7 +59,7 @@ Auth::routes();
 Route::get('/preregister', function () {
     return view('auth/preRegister');
 });
-
+//////////////////////////start register [ club / player ] //////////////////////
 Route::any('/handlepreregister',function(){
     //$type = Input::get ( 'type' );
     $type = $_GET['type'];
@@ -75,7 +75,7 @@ Route::any('/handlepreregister',function(){
         return 3 ;
     }
 })->middleware('clubRegister');
-
+//////////////////////////start register [ club / player ] ///////////////////////
 
 Route::get('/home', 'HomeController@index')->name('home'); // final
 

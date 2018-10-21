@@ -2,7 +2,7 @@
     <div class="pull-right hidden-xs">
       <!-- <b>Version</b> 2.4.0 -->
     </div>
-    <strong>Copyright &copy; 2018-2019 <a href="http://127.0.0.1:8000/" target="_blank">Sport Mate</a>.</strong> All rights
+    <strong>Copyright &copy; 2018-2019 <a href="http://127.0.0.1:8000/" target="_blank">SportsMate</a>.</strong> All rights
     reserved.
   </footer>
 
@@ -251,7 +251,9 @@
 <!-- Scripts -->
 
     @include('includes.scripts')
-
+    {{-- // start for load js file only for this page --}}
+    @yield('page_specific_scripts') 
+    {{-- // start for load js file only for this page --}}
 <!-- Scripts -->
 
 @stack('js')

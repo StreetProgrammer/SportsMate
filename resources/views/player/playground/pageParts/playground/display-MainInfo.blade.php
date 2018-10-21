@@ -28,19 +28,19 @@
     
     <a href="{{ url('/') }}/Club/{{sm_crypt($playground->clubUser->id)}}" 
        class="btn btn-success" 
-       style="border-radius: 25px;background:#99d21e;font-size: 12px"
+       style="border-radius: 25px;background:#99d21e;font-size:12px;display:inline-flex;"
     >
-      Club
-      <i class="fa fa-futbol-o" aria-hidden="true"></i>
+      {{ trans('player.Club') }} 
+      <i class="fa fa-futbol-o" aria-hidden="true"></i> 
       {{$playground->clubUser->name}}
     </a>
     
     <a href="{{ url('/') }}/Club/{{sm_crypt($playground->clubUser->id)}}" 
        class="btn btn-success" 
-       style="margin:5px;border-radius: 25px;background:#99d21e;font-size: 12px"
+       style="margin:5px;border-radius: 25px;background:#99d21e;font-size:12px;display:inline-flex;"
     >
-      Branch
-      <i class="fa fa-futbol-o" aria-hidden="true"></i>
+      {{ trans('player.Branch') }}  
+      <i class="fa fa-futbol-o" aria-hidden="true"></i> 
       {{$playground->branch->c_b_name}}
     </a>
     
@@ -48,15 +48,19 @@
 
    <h3 style="font-size: 110%;color:#FFF">
     <i class="fa fa-futbol-o" aria-hidden="true"></i>
-    {{$playground->sport->en_sport_name}}
+    @if (direction() == 'ltr')
+      {{$playground->sport->en_sport_name}}
+    @else
+      {{$playground->sport->ar_sport_name}}
+    @endif
   </h3>
 
   <h3 style="font-size: 110%;color:#FFF">
     <i class="fa fa-money" aria-hidden="true"></i>
     <span style="color: #f89406;">
-      {{$playground->c_b_p_price_per_hour}} EGP
+      {{$playground->c_b_p_price_per_hour}} {{ trans('player.EGP') }}
     </span>
-    / hour
+    {{ trans('player./_hour') }}
   </h3>
   
 
@@ -66,7 +70,7 @@
           data-toggle="modal" data-target="#newReservationModal"
     >
       <i class="fa fa-calendar-plus-o"></i>
-      <span>Reserve</span>
+      <span>{{ trans('player.Reserve') }} </span>
     </div>
   </div>
     
@@ -94,7 +98,7 @@
 
   <hr style="border-top: 2px solid #eee; margin:2px 20px;">
   <div  style="color: #fff;margin: auto;padding: 20px">
-    <h4 class="text-center">Description</h4>
+    <h4 class="text-center">{{ trans('player.Description') }}</h4>
     <p style="color:#fff">{{$playground->c_b_p_desc}}</p>
   </div>
 @endif

@@ -3,7 +3,7 @@
 
           <!--------------------->
           <div class="panel-heading text-center shade bottom-border" >
-            <h4 style="color: #06774a;margin: 5px 0px">Event Detalis</h4>
+            <h4 style="color: #06774a;margin: 5px 0px">{{ trans('player.Challenge_Detalis') }}</h4>
           </div>
           <div class="shade-2 text-center" 
                style="background: #ececec;
@@ -11,10 +11,14 @@
                   margin:15px 50px 5px 50px;"
           >
             <h4 style="font-size: 15px !important;">
-              <span>Sport: </span>
+              <span>{{ trans('player.Sport') }} : </span>
               <a class="a-holding-divs"
                   href="{{url('/')}}/Sport/{{ sm_crypt($challenge->challengeSport->id) }}">
-                {{ $challenge->challengeSport->en_sport_name }}
+                @if ( direction() == 'ltr' )
+                 {{ $challenge->challengeSport->en_sport_name }}   
+                @else
+                 {{ $challenge->challengeSport->an_sport_name }}   
+                @endif
               </a>
             </h4>
           </div>
@@ -51,13 +55,34 @@
                   margin:5px 50px;"
           >
             <h4 style="font-size: 15px !important;">
-              <span>
-                <i class="fa fa-calendar" style="color: #f89406;font-size: 20px;"></i> </span>
-              <span>{{ strftime( '%d-%m-%Y' , strtotime($challenge->C_date ) )}} </span>
-              <span><i class="fa fa-clock-o" style="color: #f89406;font-size: 20px;"></i></i></span>
-              <span>{{ $challenge->ChallengeFrom->hour_format}} </span>
-              <span><i class="fa fa-arrows-h" style="color: #f89406;font-size: 20px;"></i></i></span>
-              <span>{{ $challenge->ChallengeTo->hour_format}} </span>
+              @if ( direction() == 'ltr' )
+                  <span>
+                    <i class="fa fa-calendar" style="color: #f89406;font-size: 20px;"></i> </span>
+                  <span>{{ strftime( '%d-%m-%Y' , strtotime($challenge->C_date ) )}} </span>
+                  <span><i class="fa fa-clock-o" style="color: #f89406;font-size: 20px;"></i></i></span>
+                  <span>{{ $challenge->ChallengeFrom->hour_format}} </span>
+                  <span><i class="fa fa-arrows-h" style="color: #f89406;font-size: 20px;"></i></i></span>
+                  <span>{{ $challenge->ChallengeTo->hour_format}} </span>
+              @else
+                  <span>
+                    <i class="fa fa-calendar" style="color: #f89406;font-size: 20px;"></i> 
+                  </span>
+                  <span>
+                    {{ strftime( '%d-%m-%Y' , strtotime($challenge->C_date ) )}}  
+                  </span>
+
+                  <span style="display:inline-block;">
+                    <i class="fa fa-clock-o" style="color: #f89406;font-size: 20px;"></i></i>
+                    {{ $challenge->ChallengeFrom->hour_format}}
+                    <i class="fa fa-arrows-h" style="color: #f89406;font-size: 20px;"></i></i>
+                  </span>
+
+                  <span> 
+                    {{ $challenge->ChallengeTo->hour_format}} 
+                  </span>
+                  
+              @endif
+              
             </h4>
           </div>
 </div>

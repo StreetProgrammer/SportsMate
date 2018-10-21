@@ -6,9 +6,11 @@ Route::get('/newclubregisterview', function () {
     //return view('admin.emails.NewClubRegister');
     //return view('admin.emails.NewClubEditRequest');
 });
-/*
-* ///////////////// START REGISTER A CLUB ///////////////////
-* start of routs for register a club with all data enterd [profilr info, branches, playgrounds] 
+/*/////////////////###############################################///////////////////
+* /////////////////////////// START REGISTER A CLUB /////////////////////////////////
+/////////////////#################################################///////////////////
+
+* start of routs for register a club with all data enterd [profile info, branches, playgrounds] 
 * 
 */
 //&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&//
@@ -52,6 +54,9 @@ Route::group([ 'middleware' => ['auth'] ], function(){
 	// [[ajaxLoad]] %%%%%%%%%%% partial views %%%%%%%%%%%  [[ajaxLoad]]//
 	//%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%//
 
+	// Load nav bar [ editMain - manageClub ] view if auth club after register
+	Route::get('club/registerPageTop', 'ClubProfilesController@registerPageTop');
+
 	// Load Editable main info for the club account in register procces
 	Route::get('club/editMainRegisterInfo', 'ClubProfilesController@editMainRegisterInfo');
 
@@ -78,9 +83,9 @@ Route::group([ 'middleware' => ['auth'] ], function(){
 
 	Route::get('/registerAddBranchPlayground', 'ClubProfilesController@registerAddBranchPlayground');
 
-///////////////// END REGISTER A CLUB ///////////////////
-
-//Route::group(['prefix' => 'Club'], function(){
+/*/////////////////################################################///////////////////
+* /////////////////////////// END REGISTER A CLUB /////////////////////////////////
+/////////////////#################################################///////////////////
 
 
 /*

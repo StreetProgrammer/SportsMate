@@ -9,7 +9,8 @@
               border-radius: 0px;
               padding:3px 15px"
     >
-      <h4 style="color: #06774a;margin: 5px 0px">candidate</h4>
+      <h4 style="color: #06774a;margin: 5px 0px">{{ trans('player.Event_candidate') }}</h4>
+      {{ trans('player.Desc_Event_candidate') }}
     </div>
     <a 
       href="@if ($event->E_candidate_id == null)

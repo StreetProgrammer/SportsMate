@@ -2,7 +2,7 @@
   <div class="col-md-12">
     <div class="box box-default color-palette-box">
         <div class="box-header with-border">
-          <h3 class="box-title"><i class="fa fa-tag"></i> Color Palette</h3>
+          <h3 class="box-title"><i class="fa fa-tag"></i> {{ trans('club.mainAccountInfo') }}</h3>
         </div>
         <div class="box-body">
           <div class="row">
@@ -14,7 +14,8 @@
                   <div class="box-body box-profile">
                     <div class="text-center" style="position: relative">
                       <img id="clubProfileImagePlaceholder" class="displayCamIcon img img-rounded" 
-                            src="http://via.placeholder.com/200x200?text=Club%20Logo"
+                            style="width:200px;"
+                            src="{{ url('/') }}/player/img/football-playground.jpg"
                             alt="User profile picture"
                        >
                       <label for="clubProfileImageFile" style="position:absolute;bottom:0%;left:50%;
@@ -46,17 +47,19 @@
             </div>
             <!-- /.box-header -->
             <div class="box-body">
-              <p class="text-center">hggh</p>
+              {{-- <p class="text-center">hggh</p> --}}
               <strong>
                 <i class="fa fa-user custom" style="color: #3c8dbc;"></i>  
-                User Name
+                {{ trans('club.clubName') }}
               </strong>
               <p class="text-muted">
                 <input type="text" name="name" class="form-control"  value="">
               </p>
 
               <hr class="">
-              <strong><i class="fa fa-phone custom" style="color: #3c8dbc;"></i>  Phone</strong>
+              <strong><i class="fa fa-phone custom" style="color: #3c8dbc;"></i> 
+              {{ trans('club.clubPhone') }}
+              </strong>
 
               <p class="text-muted">
                 <input type="text" name="c_phone" class="form-control" value="">
@@ -64,7 +67,9 @@
 
               <hr>
 
-              <strong class="displayDetails"><i class="fa fa-envelope margin-r-5" style="color: #3c8dbc;"></i>  Email</strong>
+              <strong class="displayDetails"><i class="fa fa-envelope margin-r-5" style="color: #3c8dbc;"></i>  
+                {{ trans('club.clubEmail') }}
+              </strong>
 
               <p class="text-muted">
               <input type="text" name="email" class="form-control" value="">
@@ -74,7 +79,7 @@
 
               <p class="displayDetails">
                 <i class="fa fa-key margin-r-5" style="color: #3c8dbc;"aria-hidden="true"></i>
-                Password
+                {{ trans('club.clubPassword') }}
               </p>
               <div class="col-md-10">
                 <p class="text-muted">
@@ -94,7 +99,9 @@
               <hr class="">
               <div class="clearfix"></div>
 
-              <strong><i class="fa fa-map-marker margin-r-5" style="color: #3c8dbc;"></i> Location</strong>
+              <strong><i class="fa fa-map-marker margin-r-5" style="color: #3c8dbc;"></i> 
+                {{ trans('club.clubLocation') }}
+              </strong>
 
               <p class="displayDetails text-muted" >
                 
@@ -104,7 +111,7 @@
 
                       <select class="form-control input-xs" name="c_city" id="governorate">
 
-                          <option value="">Select Governorate</option>
+                          <option value="">{{ trans('club.Select_Governorate') }}</option>
 
                         @foreach ($governorate as $gov)
 
@@ -112,7 +119,11 @@
                               value="{{ $gov->id }}"
                               
                             >
-                                {{ $gov->g_en_name }}
+                                @if ( direction() == 'ltr' )
+                                  {{ $gov->g_en_name }}
+                                @else
+                                    {{ $gov->g_ar_name }}
+                                @endif
                             </option>
 
                         @endforeach
@@ -124,6 +135,17 @@
                     <div class="col-lg-5" style="">
                         <select class="form-control input-xs" name="c_area" id="area">
                           <option value="">Select Area</option>
+                          @foreach ($governorate as $goov) <!--loop throw each city -->
+                            @foreach ($goov->areas as $area) <!--loop throw each city->area -->
+                              <option value="{{ $area->id }}" >
+                                @if ( direction() == 'ltr' )
+                                  {{ $area->a_en_name }}   
+                                @else
+                                  {{ $area->a_ar_name }}   
+                                @endif 
+                              </option>
+                            @endforeach
+                          @endforeach
                         </select>
                     </div>
                   <div class="col-lg-2" style="" >
@@ -138,7 +160,8 @@
                     <!---->
                   <br>
                   <strong>
-                    <i class="fa fa-map-marker margin-r-5" style="color: #3c8dbc;"></i> Detailed Address
+                    <i class="fa fa-map-marker margin-r-5" style="color: #3c8dbc;"></i> 
+                    {{ trans('club.clubDetailed_Address') }}
                   </strong>
                   <p class="text-muted">
                     <input type="text" name="c_address" class="form-control" value="">
@@ -146,14 +169,15 @@
                   <hr>
 
                   <strong>
-                    <i class="fa fa-file-text-o margin-r-5" style="color: #3c8dbc;"></i> Description
+                    <i class="fa fa-file-text-o margin-r-5" style="color: #3c8dbc;"></i> 
+                    {{ trans('club.clubDescription') }}
                   </strong>
 
                   <textarea class="form-control" name="c_desc" id="c_desc" cols="30" rows="8">
                     
                   </textarea>
                   <br>
-                  {!! Form::submit('Save', ['class' => 'btn btn-success', 'style' => '', 'id' => 'StoreClubMainInfo']) !!}
+                  {!! Form::submit( trans('club.save')  , ['class' => 'btn btn-success', 'style' => '', 'id' => 'StoreClubMainInfo']) !!}
             </div>
             <!-- /.box-body -->
           </div>

@@ -12,7 +12,8 @@
 
       <!--------------------->
         <div class="panel-heading text-center shade bottom-border">
-        <h4 style="color: #06774a;margin: 5px 0px">Suggested Playgrounds</h4>
+            <h4 style="color: #06774a;margin: 5px 0px">{{ trans('player.Suggested_Playgrounds') }}</h4>
+            {{ trans('player.Desc_All_Suggested_Sport_Playgrounds') }}
         </div>
 {{------------------------------------------------------------}}
 <!--------------->
@@ -213,8 +214,8 @@
 	<div class="text-center">
 	    <div class="col-md-12" style="padding: 70px 0px;">
 	        <span class="shade" style="font-size: 15px;color:#000;padding:40px;background:#eee">
-	        no Suggested Playground Till Now
-	       </span>
+                {{ trans('player.no_Suggested_Playground') }}
+	        </span>
 	    </div>
 	</div>
 @endif{{-- end if suggested playground is > 0--}}

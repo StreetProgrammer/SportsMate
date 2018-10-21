@@ -12,23 +12,23 @@
           <input type="hidden" name="user_id" value="">
           <div class="shade row text-center" style="background-color: #fff;;color:#06774a;padding: 15px 0;">
             <div class="col-xs-4">
-              <span id="players" class="evechares players-playgrounds-events tab-li-focus">
-                players 
-                <span class="badge badge-warning">5</span>
+              <span id="players" class="players-playgrounds-events tab-li @isset($players) tab-li-focus @endisset">
+                {{ trans('player.players') }} 
+                {{-- <span class="badge badge-warning">5</span> --}}
                 <span class="players fa fa-circle-o-notch fa-spin" style="display: none;padding: 0px 10px;"></span>
               </span>
             </div>
             <div class="col-xs-4">
-              <span id="playgrounds" class="evechares players-playgrounds-events tab-li">
-                playgrounds 
-                <span class="badge badge-warning">5</span>
+              <span id="playgrounds" class="players-playgrounds-events tab-li @isset($playgrounds) tab-li-focus @endisset"">
+                {{ trans('player.playgrounds') }} 
+                {{-- <span class="badge badge-warning">5</span> --}}
                 <span class="playgrounds fa fa-circle-o-notch fa-spin" style="display: none;padding: 0px 10px;"></span>
               </span>
             </div>
             <div class="col-xs-4">
-              <span id="events" class="evechares players-playgrounds-events tab-li">
-                events
-                <span class="badge badge-warning">5</span>
+              <span id="events" class="players-playgrounds-events tab-li">
+                {{ trans('player.events') }}
+                {{-- <span class="badge badge-warning">5</span> --}}
                 <span class="events fa fa-circle-o-notch fa-spin" style="display: none;padding: 0px 10px;"></span>
               </span>
             </div>

@@ -16,7 +16,7 @@
     <div class="row">
       <div class="col-md-12">
 
-        <div id="event-data-tabs" style="margin-bottom:10px">
+        {{-- <div id="event-data-tabs" style="margin-bottom:10px">
           <input type="hidden" name="user_id" value="{{ $club->id }}">
           <div class="shade row text-center" style="background-color: #fff;;color:#06774a;padding: 15px 0;">
             <div class="col-xs-4">
@@ -48,7 +48,7 @@
               </span>
             </div> -->
           </div>
-        </div>
+        </div> --}}
 
       </div>
     </div>

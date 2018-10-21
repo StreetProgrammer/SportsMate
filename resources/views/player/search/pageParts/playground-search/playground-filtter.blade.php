@@ -2,7 +2,7 @@
     <div style="padding: 20px">
 		
 		<h4 style="color:#06774a;">
-            Playground search
+            {{ trans('player.Playground_search') }}
             <span id="playground_filtters_loader" style="display:none;">
                 <i class="fa fa-circle-o-notch fa-spin" style="font-size:20px;color:#06774a;"></i>
             </span>
@@ -21,7 +21,7 @@
         </h4>
 		<hr>
         <div class="form-group">
-            <label for="name">Name :</label>
+            <label for="name">{{ trans('player.Name') }} :</label>
             <input type="text" 
                   name="playground_filtters_name" 
                   class="sm-inputs form-control" 
@@ -31,7 +31,7 @@
         <br>
         
         <div class="form-group">
-            <label for="sport">sport</label>
+            <label for="sport">{{ trans('player.Sport') }}</label>
             <select class="sm-inputs form-control input-xs" 
                     name="playground_filtters_sport" 
                     id="sport">
@@ -44,7 +44,11 @@
                     <option
                       value="{{ $sport->id }}"
                     >
-                        {{ $sport->en_sport_name }}
+                      @if ( direction() == 'ltr' )
+                        {{ $sport->en_sport_name }}   
+                      @else
+                        {{ $sport->ar_sport_name }}   
+                      @endif
                     </option>
 
                 @endforeach
@@ -53,7 +57,7 @@
         </div>
         <br>
         <div class="form-group">
-          <label for="features">Price: </label>
+          <label for="features">{{ trans('player.Price_Range') }} : </label>
 
           <div class="row">
             <div class="col-lg-12">
@@ -73,7 +77,7 @@
         </div>
         <br>
         <div class="form-group">
-          <label for="features">Location:</label>
+          <label for="features">{{ trans('player.Location') }} :</label>
 
           <div class="row">
             <div class="col-lg-5 ">
@@ -83,9 +87,15 @@
                         id="governorate"
                         style="padding: 0px 5px 0px 5px;"
                 >
-                    <option value="">Governorate</option>
+                    <option value="">{{ trans('player.Select_Governorate') }}</option>
                   @foreach ($governorate as $gov)
-                    <option value="{{ $gov->id }}">{{ $gov->g_en_name }} </option>
+                    <option value="{{ $gov->id }}">
+                      @if ( direction() == 'ltr' )
+                         {{ $gov->g_en_name }}   
+                      @else
+                         {{ $gov->g_ar_name }}   
+                      @endif 
+                    </option>
                   @endforeach
                 </select>
 
@@ -96,10 +106,16 @@
                   id="area"
                   style="padding: 0px 5px 0px 5px;"
             >
-                  <option value="">Area</option>
+                  <option value="">{{ trans('player.Select_Area') }}</option>
                   @foreach ($governorate as $goov) <!--loop throw each city -->
                     @foreach ($goov->areas as $area) <!--loop throw each city->area -->
-                      <option value="{{ $area->id }}" > {{ $area->a_en_name }}</option>
+                      <option value="{{ $area->id }}" >
+                        @if ( direction() == 'ltr' )
+                          {{ $gov->a_en_name }}   
+                        @else
+                          {{ $gov->a_ar_name }}   
+                        @endif 
+                      </option>
                     @endforeach
                   @endforeach
                 </select>
@@ -117,7 +133,7 @@
         </div>
         <br>
         <div class="form-group">
-          <label for="features">Feature:</label>
+          <label for="features">{{ trans('player.features') }} :</label>
 
           <div class="row text-center">
 
@@ -127,7 +143,7 @@
                       name="playground_filtters_feature1"
                       value="1" 
                       >
-                      <span style="font-size: 75%;color: #06774a;">feature1</span>    
+                      <span style="font-size: 75%;color: #06774a;">{{ trans('player.feature1') }}</span>    
                     </label>
                   </div>
 
@@ -137,7 +153,7 @@
                       name="playground_filtters_feature2"
                       value="1" 
                       >
-                      <span style="font-size: 75%;color: #06774a;">feature2</span>    
+                      <span style="font-size: 75%;color: #06774a;">{{ trans('player.feature2') }}</span>    
                     </label>
                   </div>
 
@@ -147,7 +163,7 @@
                       name="playground_filtters_feature3"
                       value="1" 
                       >
-                      <span style="font-size: 75%;color: #06774a;">feature3</span>    
+                      <span style="font-size: 75%;color: #06774a;">{{ trans('player.feature3') }}</span>    
                     </label>
                   </div>
 
@@ -157,7 +173,7 @@
                       name="playground_filtters_feature4"
                       value="1" 
                       >
-                      <span style="font-size: 75%;color: #06774a;">feature4</span>    
+                      <span style="font-size: 75%;color: #06774a;">{{ trans('player.feature4') }}</span>    
                     </label>
                   </div>
 
@@ -167,7 +183,7 @@
                       name="playground_filtters_feature5"
                       value="1" 
                       >
-                      <span style="font-size: 75%;color: #06774a;">feature5</span>    
+                      <span style="font-size: 75%;color: #06774a;">{{ trans('player.feature5') }}</span>    
                     </label>
                   </div>
 
@@ -177,7 +193,7 @@
                       name="playground_filtters_feature6"
                       value="1" 
                       >
-                      <span style="font-size: 75%;color: #06774a;">feature6</span>    
+                      <span style="font-size: 75%;color: #06774a;">{{ trans('player.feature6') }}</span>    
                     </label>
                   </div>
 
@@ -187,7 +203,7 @@
                       name="playground_filtters_feature7"
                       value="1" 
                       >
-                      <span style="font-size: 75%;color: #06774a;">feature7</span>    
+                      <span style="font-size: 75%;color: #06774a;">{{ trans('player.feature7') }}</span>    
                     </label>
                   </div>
 
@@ -197,7 +213,7 @@
                   name="playground_filtters_feature8"
                   value="1" 
                   >
-                  <span style="font-size: 75%;color: #06774a;">feature8</span>    
+                  <span style="font-size: 75%;color: #06774a;">{{ trans('player.feature8') }}</span>    
                 </label>
               </div>
 
@@ -214,7 +230,7 @@
                 class="btn sm-inputs btn-warning" 
                 id="playground_filtters"
             >
-                Update
+                {{ trans('player.filter') }}
             </button> 
         </div>
         

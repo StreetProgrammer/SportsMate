@@ -23,7 +23,7 @@
                       font-size: 15px;
                       border-radius: 50px;"
             >
-              {{ $branch->branchPlaygrounds->count() }} playground
+              {{ $branch->branchPlaygrounds->count() }} {{ trans('player.Playgrounds') }}
             </span>
           </a>
         </h3>

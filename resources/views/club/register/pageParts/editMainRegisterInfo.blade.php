@@ -2,7 +2,7 @@
   <div class="col-md-12">
     <div class="box box-default color-palette-box">
         <div class="box-header with-border">
-          <h3 class="box-title"><i class="fa fa-tag"></i> Color Palette</h3>
+          <h3 class="box-title"><i class="fa fa-tag"></i> {{ trans('club.mainAccountInfo') }}</h3>
         </div>
         <div class="box-body">
           <div class="row">
@@ -14,12 +14,13 @@
                   <div class="box-body box-profile">
                     <div class="text-center" style="position: relative">
                       <img id="editClubProfileImagePlaceholder" class="displayCamIcon img img-rounded" 
+                            style="width:200px;"
                             @if ( !empty(Auth::user()->user_img) )
                               src = "{{ Storage::url($club->user_img) }}"
                             @else
-                              src="http://via.placeholder.com/200x200?text=Club%20Logo"
+                              src="{{ url('/') }}/player/img/football-playground.jpg"
                             @endif
-                            alt="User profile picture"
+                            alt="Club profile picture"
                        >
                       <label for="editClubProfileImageFile" style="position:absolute;bottom:0%;left:50%;
                         transform:translate(-50%, -20%);
@@ -63,14 +64,16 @@
               <!-- <p class="text-center">hggh</p> -->
               <strong>
                 <i class="fa fa-user custom" style="color: #3c8dbc;"></i>  
-                User Name
+                {{ trans('club.clubName') }}
               </strong>
               <p class="text-muted">
                 <input type="text" name="name" class="form-control"  value="{{Auth::user()->name}}">
               </p>
 
               <hr class="">
-              <strong><i class="fa fa-phone custom" style="color: #3c8dbc;"></i>  Phone</strong>
+              <strong><i class="fa fa-phone custom" style="color: #3c8dbc;"></i>  
+                {{ trans('club.clubPhone') }}
+              </strong>
 
               <p class="text-muted">
                 <input type="text" name="c_phone" class="form-control" value="{{Auth::user()->clubProfile->c_phone}}">
@@ -78,7 +81,9 @@
 
               <hr>
 
-              <strong class="displayDetails"><i class="fa fa-envelope margin-r-5" style="color: #3c8dbc;"></i>  Email</strong>
+              <strong class="displayDetails"><i class="fa fa-envelope margin-r-5" style="color: #3c8dbc;"></i>  
+                {{ trans('club.clubEmail') }}
+              </strong>
 
               <p class="text-muted">
               <input type="text" name="email" class="form-control" value="{{ Auth::user()->email }}">
@@ -88,7 +93,7 @@
 
               <p class="displayDetails">
                 <i class="fa fa-key margin-r-5" style="color: #3c8dbc;"aria-hidden="true"></i>
-                Password
+                {{ trans('club.clubPassword') }}
               </p>
               <div class="col-md-10">
                 <p class="text-muted">
@@ -108,74 +113,72 @@
               <hr class="">
               <div class="clearfix"></div>
 
-              <strong><i class="fa fa-map-marker margin-r-5" style="color: #3c8dbc;"></i> Location</strong>
+              <strong><i class="fa fa-map-marker margin-r-5" style="color: #3c8dbc;"></i> 
+                {{ trans('club.clubLocation') }}
+              </strong>
 
               <p class="displayDetails text-muted" >
                 
               <!---->
 
               <div class="col-lg-5">
+                <select class="form-control input-xs" name="c_city" id="governorate">
+                  <option value="">{{ trans('club.Select_Governorate') }}</option>
+                    @foreach ($governorate as $gov)
+                    <option
+                      value="{{ $gov->id }}"
+                      @php
+                        echo (Auth::user()->clubProfile->c_city == $gov->id ? ' selected="selected" ' : '');
+                      @endphp
+                    >
+                      @if ( direction() == 'ltr' )
+                        {{ $gov->g_en_name }}
+                      @else
+                        {{ $gov->g_ar_name }}
+                      @endif
+                    </option>
 
-                      <select class="form-control input-xs" name="c_city" id="governorate">
-
-                          <option value="">Select Governorate</option>
-
-                        @foreach ($governorate as $gov)
-
-                            <option
-                              value="{{ $gov->id }}"
-                              @php
-                                echo (Auth::user()->clubProfile->c_city == $gov->id ? ' selected="selected" ' : '');
-                              @endphp
-                            >
-                                {{ $gov->g_en_name }}
-                            </option>
-
-                        @endforeach
-
-
-                      </select>
-
-                    </div>
-                    <div class="col-lg-5" style="">
-                        <select class="form-control input-xs" name="c_area" id="area">
-                          <option value="">Select Area</option>
-                          @foreach ($governorate as $goov) <!--loop throw each city -->
-
-                                @foreach ($goov->areas as $area) <!--loop throw each city->area -->
-
-                                  <!--check if we are in club city -->
-                                  @if ($area->a_governorate_id == Auth::user()->clubProfile->c_city)
-
-                                    <option
-                                      value="{{ $area->id }}"
-                                      @php
-                                        echo (Auth::user()->clubProfile->c_area == $area->id ? ' selected="selected" ' : '');
-                                      @endphp
-                                    >
-                                      {{ $area->a_en_name }}
-                                    </option>
-
-                                  @endif
-
-
-                                @endforeach
-                          @endforeach
-                        </select>
-                    </div>
-                  <div class="col-lg-2" style="" >
-                      <div id="loader"
-                           class="text-center "
-                           style="display: none;z-index: 99999;font-size: 10px;color: #3c8dbc;"
-                      >
-                        <i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
-                      </div>
+                    @endforeach
+                </select>
+              </div>
+              <div class="col-lg-5" style="">
+                  <select class="form-control input-xs" name="c_area" id="area">
+                    <option value="">Select Area</option>
+                    @foreach ($governorate as $goov) <!--loop throw each city -->
+                      @foreach ($goov->areas as $area) <!--loop throw each city->area -->
+                        <!--check if we are in club city -->
+                        @if ($area->a_governorate_id == Auth::user()->clubProfile->c_city)
+                          <option
+                            value="{{ $area->id }}"
+                            @php
+                              echo (Auth::user()->clubProfile->c_area == $area->id ? ' selected="selected" ' : '');
+                            @endphp
+                          >
+                            @if ( direction() == 'ltr' )
+                              {{ $area->a_en_name }}   
+                            @else
+                              {{ $area->a_ar_name }}   
+                            @endif 
+                          </option>
+                        @endif
+                      @endforeach
+                    @endforeach
+                  </select>
+              </div>
+              <div class="col-lg-2" style="" >
+                  <div id="loader"
+                        class="text-center "
+                        style="display: none;z-index: 99999;font-size: 10px;color: #3c8dbc;"
+                  >
+                    <i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
                   </div>
-                  <div class="clearfix"></div>
+              </div>
+              <div class="clearfix"></div>
                     <!---->
                   <br>
                   <strong>
-                    <i class="fa fa-map-marker margin-r-5" style="color: #3c8dbc;"></i> Detailed Address
+                    <i class="fa fa-map-marker margin-r-5" style="color: #3c8dbc;"></i> 
+                    {{ trans('club.clubDetailed_Address') }}
                   </strong>
                   <p class="text-muted">
                     <input type="text" name="c_address" class="form-control" value="{{Auth::user()->clubprofile->c_address}}">
@@ -183,14 +186,15 @@
                   <hr>
 
                   <strong>
-                    <i class="fa fa-file-text-o margin-r-5" style="color: #3c8dbc;"></i> Description
+                    <i class="fa fa-file-text-o margin-r-5" style="color: #3c8dbc;"></i> 
+                    {{ trans('club.clubDescription') }}
                   </strong>
 
                   <textarea class="form-control" name="c_desc" id="c_desc" cols="30" rows="8">
                     {{Auth::user()->clubprofile->c_desc}}
                   </textarea>
                   <br>
-                  {!! Form::submit('Save', ['class' => 'btn btn-success', 'style' => '', 'id' => 'UpdateClubMainInfo']) !!}
+                  {!! Form::submit(trans('club.save'), ['class' => 'btn btn-success', 'style' => '', 'id' => 'UpdateClubMainInfo']) !!}
             </div>
             <!-- /.box-body -->
           </div>

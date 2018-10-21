@@ -23,7 +23,7 @@
     </h3>
   </div>
 
-  <div class="text-center" style="padding-left:40%;">
+  {{-- <div class="text-center" style="padding-left:40%;">
     <div class="oval-div oval-div-green" 
           style="cursor: pointer;float: left;"
           data-toggle="modal" data-target="#newChallengeModal"
@@ -31,7 +31,7 @@
       <i class="fa fa-star"></i>
       <span>Invite</span>
     </div>
-  </div>
+  </div> --}}
     
   
   <div class="clearfix"></div>
@@ -60,36 +60,22 @@
 
 <hr style="border-top: 2px solid #eee; margin:2px 20px;">
 <div class="text-center" style="color: #fff;margin: auto;padding: 20px">
+  <p style="color: #fff">
+    <span style="color:#ddd">{{ trans('player.contain') }} </span>
+    <span class="span-number" style="background:#f0ad4e!important;">{{$club->clubBranches->count()}}</span> 
+    <span style="color:#ddd"> {{ trans('player.branches') }}</span>
+  </p>
+</div>
 
+<div class="text-center" style="color: #fff;margin: auto;padding: 20px">
+  <p style="color: #fff">
+    <span>{{ trans('player.contain') }} </span>
+    <span class="span-number" style="background:#f0ad4e!important;">{{$club->clubPlaygrounds->count()}}</span> 
+    <span> {{ trans('player.playgrounds') }}</span>
+  </p>
 </div>
 <!--  start upload profile image Model -->
-<div id="uploadimageModal" class="modal" role="dialog">
-  <div class="modal-dialog">
-    <div class="modal-content">
-          <div class="modal-header" style="color: #fff;background-color: #06774a !important;">
-            <button type="button" class="close" data-dismiss="modal" style="color:#fff">&times;</button>
-            <h4 class="modal-title" >
-              Upload & Crop Image 
-              <span id="imageInfoLoader" style="display:none;">
-                <i class="fa fa-circle-o-notch fa-spin" style="font-size:24px"></i>
-              </span>
-            </h4>
-          </div>
-          <div class="modal-body imageInfo">
-            <div class="row">
-            <div class="col-md-12 text-center">
-              <div id="player_photo" style="<!-- width:350px; --> margin-top:30px"></div>
-            </div>
-            
-        </div>
-          </div>
-          <div class="modal-footer" style="color: #fff;background-color: #06774a !important;">
-            <button class="btn btn-warning crop_image" style="background:#ff9800">Crop & Upload</button>
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-          </div>
-      </div>
-    </div>
-</div>
+
 
 <!--  end upload profile image Model -->
 

@@ -51,32 +51,25 @@
 
   
     @if( Auth::id() == $user->id )
-      <div class="text-center" style="padding-left:15%;">
-        <div class="oval-div oval-div-green" style="float: left;cursor: pointer;">
-          <i class="fa fa-star"></i>
-          <span>Invite</span>
-        </div>
-        <div style="width: 50px;text-align: center;float:left;margin-top:15px;color: #fff">
-          <div class="vl"></div>
-        </div>
-        <div class="oval-div oval-div-orange" 
-              style="cursor: pointer;float: left;"
-              data-toggle="modal" data-target="#newEventModal"
-        >
-          <i class="fa fa-star"></i>
-          <span>New Event</span>
+      <div class="text-center" style="">
+      <div class="btn btn-success" 
+            style="border-radius: 25px;background:#99d21e;"
+            data-toggle="modal" data-target="#newEventModal"
+      >
+          <i class="fa fa-calendar-plus-o"></i>
+          <span>{{ trans('player.New_Event') }}</span>
         </div>
       </div>
     @else
-      <div class="text-center" style="padding-left:40%;">
-        <div class="oval-div oval-div-green" 
-              style="cursor: pointer;float: left;"
+       <div class="text-center" style="">
+        <div class="btn btn-success" 
+              style="border-radius: 25px;background:#99d21e;"
               data-toggle="modal" data-target="#newChallengeModal"
         >
-          <i class="fa fa-star"></i>
-          <span>Invite</span>
+            <i class="fa fa-calendar-plus-o"></i>
+            <span>{{ trans('player.New_Challenge') }}</span>
+          </div>
         </div>
-      </div>
     @endif
     
   
@@ -96,18 +89,23 @@
   <div>
     <p style="color: #fff">
       <i class="fa fa-map-marker"></i>
-      {{$user->playerProfile->governorate->g_en_name}}, {{$user->playerProfile->area->a_en_name}}
+      @if (direction() == 'ltr')
+        {{$user->playerProfile->governorate->g_en_name}}, {{$user->playerProfile->area->a_en_name}}
+      @else
+        {{$user->playerProfile->governorate->g_ar_name}}, {{$user->playerProfile->area->a_ar_name}}
+      @endif
+      
     </p>
   </div>
 
   <div>
     <p style="color: #fff">
       @if ($user->playerProfile->p_gender == 1)
+        {{ trans('player.male') }}
         <i class="fa fa-male" ></i>  
-        male
       @elseif($user->playerProfile->p_gender == 2)
+        {{ trans('player.female') }}
         <i class="fa fa-female" ></i>  
-        female
       @endif
     </p>
   </div> 
@@ -118,7 +116,7 @@
 <hr style="border-top: 2px solid #eee; margin:2px 20px;">
 <div class="text-center" style="color: #fff;margin: auto;padding: 20px">
   <div style="margin-bottom: 40px">
-    <h4 style="color: #99d21e;">Interested in : 
+    <p style="color: #fff">{{ trans('player.Interested_in') }} : 
       @if ($user->playerProfile->p_preferred_gender == 1)
         <span style="font-size: 120%;color: #fff;"><i class="fa fa-male" ></i></span>  
       @elseif($user->playerProfile->p_preferred_gender == 2)
@@ -126,16 +124,16 @@
       @elseif($user->playerProfile->p_preferred_gender == 3)
         <span style="font-size: 120%;color: #fff;"><i class="fa fa-male" ></i> | <i class="fa fa-female" ></i> </span> 
       @endif
-    </h4>
+    </p>
   </div>
   <div style="margin-bottom: 40px">
     <h4 style="color: #99d21e;">
-      Ages
+       {{ trans('player.Age') }}
       <span style="color:#fff;font-weight:bold;">
           @php
           $age = date_diff(date_create($user->playerProfile->p_born_date), date_create('now'))->y ;
 
-          echo ($age != 0 ? ' <span style="color:#fff">' . $age  . '</span>' . ' Years Old ' : 'Not Detemined');
+          echo ($age != 0 ? ' <span style="color:#fff">' . $age  . ' </span>' . trans('player.Years_Old') : trans('player.Not_Detemined'));
 
           echo '';
           @endphp
@@ -144,7 +142,7 @@
   </div>
   <div>
     <h4 style="color: #99d21e;">
-      Sports
+    {{ trans('player.Sports') }} 
       @if (Auth::id() == $user->id)
          <span style="color:#FFF;cursor:pointer;" 
             data-toggle="modal" data-target="#sportseditModal">
@@ -163,7 +161,11 @@
       >
         <p style="color: #fff;">
           <span style="color:#37474f;font-size:15px">
-            {{$sport->en_sport_name}}
+            @if (direction() == 'ltr')
+              {{$sport->en_sport_name}}
+            @else
+              {{$sport->ar_sport_name}}
+            @endif
           </span>
           <br>
            @if ($sport->sportUserInfo->as_player == 1)
@@ -196,7 +198,7 @@
   <div>
     <div style="padding: 10px">
       <h4 style="color:#99d21e;">
-        Available Time
+        {{ trans('player.Available_Time') }} 
         @if (Auth::id() == $user->id)
           <span style="color:#FFF;cursor:pointer;"
               data-toggle="modal" data-target="#vacantTimeModal"
@@ -206,24 +208,34 @@
         @endif
       </h4>
     </div>
-    @foreach ($user->vacancies as $vacant)
+    @if ($user->vacancies->count() > 0)
+      @foreach ($user->vacancies as $vacant)
+        <div class="shade" style="padding: 0px 16px;
+                    background: #eee;
+                    border: 2px solid #fff;
+                    border-radius: 5px;
+                    margin: 10px 0px" 
+        >
+          <!-- <span>Day :</span> -->
+          <span class="badge badge-success rolesbadge">{{ $vacant->Day->day_format }}</span>
+          <span></span>
+          <span class="badge badge-info rolesbadge">{{ $vacant->From->hour_format }}</span>
+          <span></span>
+          <span class="badge badge-info rolesbadge">{{ $vacant->To->hour_format }}</span>
+
+        </div>
+      @endforeach
+    @else
       <div class="shade" style="padding: 0px 16px;
-                  background: #eee;
-                  border: 2px solid #fff;
-                  border-radius: 5px;
-                  margin: 10px 0px" 
-      >
-        <!-- <span>Day :</span> -->
-        <span class="badge badge-success rolesbadge">{{ $vacant->Day->day_format }}</span>
-        <span></span>
-        <span class="badge badge-info rolesbadge">{{ $vacant->From->hour_format }}</span>
-        <span></span>
-        <span class="badge badge-info rolesbadge">{{ $vacant->To->hour_format }}</span>
-
-      </div>
-
-
-    @endforeach
+                    background: #eee;
+                    border: 2px solid #fff;
+                    border-radius: 5px;
+                    margin: 10px 0px" 
+        >
+          <p>{{ trans('player.No_Vacant_Times') }}</p>
+        </div>
+    @endif
+   
 
   </div>
 </div>
@@ -234,7 +246,7 @@
           <div class="modal-header" style="color: #fff;background-color: #06774a !important;">
             <button type="button" class="close" data-dismiss="modal" style="color:#fff">&times;</button>
             <h4 class="modal-title" >
-              Upload & Crop Image 
+              {{ trans('player.Update_Profile_Image') }} 
               <span id="imageInfoLoader" style="display:none;">
                 <i class="fa fa-circle-o-notch fa-spin" style="font-size:24px"></i>
               </span>
@@ -249,8 +261,8 @@
         </div>
           </div>
           <div class="modal-footer" style="color: #fff;background-color: #06774a !important;">
-            <button class="btn btn-warning crop_image" style="background:#ff9800">Crop & Upload</button>
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button class="btn btn-warning crop_image" style="background:#ff9800">{{ trans('player.Save') }}</button>
+            <button type="button" class="btn btn-default" data-dismiss="modal">{{ trans('player.Close') }}</button>
           </div>
       </div>
     </div>

@@ -3,7 +3,7 @@
 	  	<div>
 	      <a href="{{url('/')}}/Challenge/Show/{{sm_crypt($challenge->id)}}" class="a-holding-divs" style="">
 				<div class="row" style="background-color: #fff;padding: 20px 53px;">
-				    <div class="col-md-4 text-center">
+				    <div class="col-xs-4 text-center">
 				      <div style="border-radius: 100%; overflow: hidden; width: 60px; height: 60px; margin-top: 15px;margin: 0px auto;">
 				        <img style="    width: 60px;" 
 				            @if (empty( $challenge->creator->user_img))
@@ -19,23 +19,52 @@
 				        <h4>4</h4>
 				      </div>
 				    </div>
-				    <div class="col-md-4 text-center">
-				      
-				        <div>V.S</div>
-				        
-				          <div class="div-number">4</div>
-				        
-				       
-				          <div class="div-number" style="float: right;">4</div>
-				          
-				       <div class="clearfix"></div>
-				        
-				          <div class="div-number" >4</div>
-				      
-				      
-				          <div class="div-number" style="float: right;">4</div> 
+				    <div class="col-xs-4 text-center">
+							<div class="row text-center">
+								<div class="text-center col-xs-12">V.S</div>
+								<div class="text-center col-xs-6">
+									<span class=" span-number">
+										1
+									</span>
+								</div>
+								<div class="text-center col-xs-6">
+									<span class=" span-number">
+										1
+									</span>
+								</div>
+								<div class="text-center col-xs-6">
+									<span class=" span-number">
+										1
+									</span>
+								</div>
+								<div class="text-center col-xs-6">
+									<span class=" span-number">
+										1
+									</span>
+								</div>
+								<div class="text-center col-xs-6">
+									<span class=" span-number" >
+										1
+									</span>
+								</div>
+								<div class="text-center col-xs-6">
+									<span class=" span-number" >
+										1
+									</span>
+								</div>
+								<div class="text-center col-xs-6">
+									<span class=" span-number" >
+										1
+									</span>
+								</div>
+								<div class="text-center col-xs-6">
+									<span class=" span-number" >
+										1
+									</span>
+								</div>
+							</div>
 				    </div>
-				    <div class="col-md-4 text-center">
+				    <div class="col-xs-4 text-center">
 				      <div style="border-radius: 100%; overflow: hidden; width: 60px; height: 60px; margin-top: 15px;margin: 0px auto;">
 				        <img style="width: 60px;" 
 							@if (empty($challenge->candidate->user_img))
@@ -55,7 +84,7 @@
 				            <span class="a-holding-divs" 
 				                  style="color:#00C853;font-size:10px;" 
 				            >
-				                <i class="fa fa-question" aria-hidden="true"></i>
+				                <i class="fa fa-question-o" aria-hidden="true"></i>
 				            </span>                  
 				          @elseif ($challenge->C_YesOrNo == 1)
 				            <span class="a-holding-divs" 
@@ -73,29 +102,29 @@
 				      </div>
 				    </div>  
 				</div>
-				<div class="row text-center">
-				  <div class="col-md-12" style="background-color: #4f4c41;padding: 10px;">
-				    <div class="col-md-4" style="color: white;">
+				<div class="row text-center" style="background-color: #4f4c41;padding: 10px;">
+
+				    <div class="col-xs-4 text-center" style="color: white;">
 				      <i class="fa fa-calendar" style="color:#f89406;font-size: 20px;"></i>
 				      @php
 				        echo strftime( '%d %B %Y' , strtotime($challenge->C_date) );// to display a nice formatted date
 				      @endphp
 				    </div>
-				    <div class="col-md-4" style="color: white;">
+				    <div class="col-xs-4 text-center " style="color: white;display:inline-flex;">
 				      <i class="fa fa-clock-o" style="color:#f89406;font-size: 20px;"></i>
 				      {{$challenge->ChallengeFrom->hour_format}}
 				      <i class="fa fa-arrows-h" style="color:#f89406;font-size: 20px;"></i>
 				      {{$challenge->ChallengeTo->hour_format}}
 				    </div>
-				    <div class="col-md-4" style="color: white;">
+				    <div class="col-xs-4 text-center" style="color: white;">
 				      <i class="fa fa-club" style="font-size: 20px;"></i>
 				      @if ($challenge->C_playground_id != null)
 				      	{{ $challenge->challengePlayground->c_b_p_name }}
 				      @else
-						no playground
+						{{ trans('player.no_playground') }} 
 				      @endif
 				    </div>
-				  </div>
+
 				</div> 
 			</a>   
 		</div>

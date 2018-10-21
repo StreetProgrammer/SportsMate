@@ -21,7 +21,19 @@ h3 {
     position: relative;
     height: 280px;
 }
-
+/*-=-=-=-=-=-=-=-=-=-=-=- */
+/* Home */
+/*-=-=-=-=-=-=-=-=-=-=-=- */
+.flow-div{
+    margin: auto;
+    max-width: 128px;
+    border-radius: 100%;
+}
+.flow-div i{
+    font-size: 50px;
+    color: #fff;
+    padding: 30px
+}
 /*-=-=-=-=-=-=-=-=-=-=-=- */
 /* Counter Grids */
 /*-=-=-=-=-=-=-=-=-=-=-=- */
@@ -193,10 +205,10 @@ h3 {
 .mega-menu {
     padding: 10px 0px ! important;
     width: 540px;
-  border-radius: 0;
-  margin-top: 0px;
-  background-image: linear-gradient(rgba(76, 175, 80, 0.58), rgba(182, 190, 103, 0.56)),url(../img/en_background_golf.png);
-    }
+    border-radius: 0;
+    margin-top: 0px;
+    background-image: linear-gradient(rgba(76, 175, 80, 0.07), #DCEDC8),
+ }
 
 .mega-menu li {
     display: inline-block;
@@ -356,11 +368,16 @@ a:focus, a:hover {
     top: -36px;
     color: #706f6f;
 }
-
+.counter-overlay{
+    background-color: #060505ba;
+    padding-top: 100px;
+    padding-bottom: 100px;
+}
+    
 .hr {
     display: flex;
     max-height: 30px;
-    width: 48%;
+    width: 52%;
     float: none;
     margin-top: 35px;
 }
@@ -392,11 +409,11 @@ a:focus, a:hover {
 }
 .flow2-div{
     float: right;
-    width: 48%
+    width: 48%;
 }
 .flow-last{
     float: right;
-    position: absolute;
+    position: absolute; 
 }
 .players-main,.players-main .container{
     background-color: #eee;   
@@ -438,7 +455,7 @@ a:focus, a:hover {
     display: none;
 }
 .oval-div{   
-    padding: 4px 13px;
+    padding: 2% 3%;
     -webkit-border-radius: 50px 50px 0 0;
     -moz-border-radius: 50px 50px 0 0;
     border-radius: 50px 50px 50px 50px;
@@ -448,15 +465,17 @@ a:focus, a:hover {
     margin-left: 6px;
 }
 .oval-div >i{
-    margin-left: 5px;
+    margin-left: 2px;
 }
 .oval-div-green{
     background-color: #99d21e;
+    float: right;
 }
 .oval-div-orange{
     background-color: orange;
+    float: right;
 }
-.player{
+.Player{
     background-color: #efeded6b;
     padding-top: 12px;
     padding-bottom: 20px;
@@ -929,39 +948,84 @@ a:focus, a:hover {
     padding-right: 15px;
     padding-bottom: 20px
 }
-
-/*-=-=-=-=-=-=-=-=-=-=-=- */
-/* Home */
-/*-=-=-=-=-=-=-=-=-=-=-=- */
-.flow-div{
-    margin: auto;
-    max-width: 128px;
-    border-radius: 100%;
-}
-.flow-div i{
-    font-size: 50px;
-    color: #fff;
-    padding: 30px
-}
-
 footer{
     background-color: #545353;
-    padding: 20px;
+    padding-top: 20px;
+    padding-bottom: 20px;
     color: white;
 }
 footer p{
     color: white;
 }
-
-.counter-overlay {
-    background-color: #060505ba;
-    padding-top: 100px;
-    padding-bottom: 100px;
+.court-name{
+    margin: auto;
+    color: #fff;
+    /*padding-right: 50px;*/
+}
+.courts-main .court-col {
+    height: auto;
+    background-color: #06774a;
+}
+.court-img {
+    border-radius: 100%;
+    overflow: hidden;
+    width: 130px;
+    height: 130px;
+    margin: auto;
+    margin-top: 15px;
+}
+.court-col p {
+    color: #fff;
+}
+.court-seperator {
+    width: 50px;
+    text-align: center;
+    float: right;
+    margin-top: 15px;
+}
+.branch-details{
+    padding: 15px;
+}
+.ovals{
+    width: 164px;
+    margin: auto;
+    height: 20px;
 }
 
 /*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
 /*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
-
+.div-number{
+        border-radius: 50%;
+        background-color: #4f4c41;
+        margin-top: 10px;
+        color: white;
+        width: 30px;
+        height: 30px;
+        text-align: center;
+        padding-top: 4px;
+        font-size: 16px;
+        float: right;
+}
+.span-number {
+    height: 30px !important;
+    width: 30px !important;
+    line-height: 30px !important;
+    text-align: center !important;
+    border-radius: 50px !important;
+    background: #06774a !important;
+    color: white !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    padding: 0px 8px !important;
+    font-weight: 700 !important;
+}
+#noti-count {
+    position: relative !important;
+    bottom: 10px !important;
+    left: 13px !important;
+    border-radius: 16px !important;
+    padding: 1px 5px !important;
+}
 .badge {
   padding: 1px 9px 2px;
   font-size: 10px;
@@ -1081,7 +1145,9 @@ input[type=text]:focus,input[type=email]:focus, input[type=password]:focus {
 }
 
 
-
+.notification-ul {
+    margin: 0px 15px 0px 0px !important ;
+}
 .navbar-default .dropdown-menu.notify-drop {
   min-width: 330px;
   background-color: #fff;
@@ -1653,4 +1719,53 @@ input[type=text]:focus,input[type=email]:focus, input[type=password]:focus {
     color: #99a4ac;
 }
 
-.irs-disabled {}
+/* ///////////////////////////// start login - register style///////////////////// */
+.alert-validate::before {
+    content: attr(data-validate);
+    position: absolute;
+    max-width: 70%;
+    background-color: white;
+    border: 1px solid #c80000;
+    border-radius: 3px;
+    padding: 4px 25px 4px 10px;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+    transform: translateY(-50%);
+    left: 8px;
+    pointer-events: none;
+
+    font-family: Raleway-SemiBold;
+    color: #c80000;
+    font-size: 13px;
+    line-height: 1.4;
+    text-align: left;
+
+    visibility: hidden;
+    opacity: 0;
+
+    -webkit-transition: opacity 0.4s;
+    -o-transition: opacity 0.4s;
+    -moz-transition: opacity 0.4s;
+    transition: opacity 0.4s;
+}
+
+.alert-validate::after {
+    content: "\f12a";
+    font-family: FontAwesome;
+    display: block;
+    position: absolute;
+    color: #c80000;
+    font-size: 15px;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+    transform: translateY(-50%);
+    left: 13px !important;
+}
+
+/* ///////////////////////////// end login - register style///////////////////// */
